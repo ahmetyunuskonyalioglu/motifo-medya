@@ -23,6 +23,8 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - `marka/` – logo_beyaz/siyah/altin, amblem; `fr_logo` gerekiyorsa `araclar/logo_anim.py` ile yeniden üret
 - Proje konumları: Oyster Pırlanta = Kayseri İldem · Afrika = Gabon villa · Florya Mavikoru = İstanbul Florya ·
   Afra Park / Vogue / Bahçeşehir = İstanbul Bahçeşehir · YCR = Antalya Lara (Pesta Hotel) · Kıbrıs = KKTC
+- BAHADIR_ARMA = Arma, İstanbul Bahçeşehir (BİM modeli; şeffaf/kesit görselleri BİM reels için).
+- Büyüme yol haritası dokümanı: https://claude.ai/code/artifact/2e47630d-bf04-48c7-ba73-b3df9684b1fb
 - Bilinmeyen konum yazılmaz.
 - **Müştemilat:** Tasarımı düşük olan müştemilat görselleri ana ev gibi sunulmaz; ya kullanılmaz ya da "müştemilat" diye belirtilir. Bilinen: AFRİKA/26.jpg (müştemilat salonu). Emin olunmayan iç mekânlar için Ahmet'e sor.
 
