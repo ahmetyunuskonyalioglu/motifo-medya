@@ -19,6 +19,8 @@ for i,t in enumerate(cuts):
     top=[76,79,74,77,72,76,79,84][i%8]
     m.add(pluck(top,2.2,vol=0.085),t+0.1); m.add(pluck(top-5,2.0,vol=0.05),t+0.1+step/2)
 # logo kapanışı
+if send>=total-0.5:
+    m.save(out,fade_out=1.2); sys.exit()
 L=send-0.1
 m.add(pluck(57,0.8,vol=0.08),L+0.15)
 for i,n in enumerate([69,72,76,74,79,81]): m.add(pluck(n,1.5,vol=0.10),L+0.78+i*0.2)

@@ -65,7 +65,9 @@ def reverb(x,mix=0.25,seed=3):
 class Mix:
     def __init__(s,dur): s.buf=np.zeros((int(dur*SR),2))
     def add(s,clip,at):
-        i=int(at*SR); j=min(len(s.buf),i+len(clip)); s.buf[i:j]+=clip[:j-i]
+        i=int(at*SR)
+        if i>=len(s.buf): return
+        j=min(len(s.buf),i+len(clip)); s.buf[i:j]+=clip[:j-i]
     def save(s,path,fade_out=1.2):
         b=reverb(s.buf); n=int(fade_out*SR); b[-n:]*=np.linspace(1,0,n)[:,None]
         b=np.tanh(b*1.2)/np.tanh(1.2); b=b/max(1e-9,np.abs(b).max())*0.89
