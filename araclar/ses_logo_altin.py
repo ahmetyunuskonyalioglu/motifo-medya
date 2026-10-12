@@ -1,0 +1,12 @@
+import sys; sys.path.insert(0,sys.argv[1])
+from sesler import *
+m=Mix(6.6)
+m.add(pluck(57,0.8,vol=0.08),0.15)
+for i,n in enumerate([69,72,76,74,79,81]): m.add(pluck(n,1.5,vol=0.10),0.78+i*0.2)
+m.add(whoosh(1.2,vol=0.045),1.2)
+m.add(pad([57,64,69,72,76],4.7,a=0.6,r=2.4,vol=0.14,bright=1800,seed=3),1.9)
+m.add(pad([45],4.7,a=0.4,r=2.4,vol=0.10,bright=250,seed=5),1.9)
+m.add(bell(88,3,vol=0.11),2.95)
+m.add(whoosh(1.3,vol=0.03,seed=9),3.85)
+for t,n in ((4.5,93),(4.9,96),(5.2,100),(5.5,98)): m.add(bell(n,1.8,vol=0.06),t)
+m.save(sys.argv[2],fade_out=0.9)
