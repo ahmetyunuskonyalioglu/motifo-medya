@@ -18,13 +18,9 @@ for i,t in enumerate(cuts):
     if t>0: m.add(whoosh(0.9,vol=0.035,seed=i),t-0.45)
     top=[76,79,74,77,72,76,79,84][i%8]
     m.add(pluck(top,2.2,vol=0.085),t+0.1); m.add(pluck(top-5,2.0,vol=0.05),t+0.1+step/2)
-# logo kapanışı
-if send>=total-0.5:
-    m.save(out,fade_out=1.2); sys.exit()
-L=send-0.1
-m.add(pluck(57,0.8,vol=0.08),L+0.15)
-for i,n in enumerate([69,72,76,74,79,81]): m.add(pluck(n,1.5,vol=0.10),L+0.78+i*0.2)
-m.add(pad([57,64,69,72,76],max(1.5,total-(L+1.9)),a=0.6,r=1.8,vol=0.13,bright=1800,seed=3),L+1.9)
-m.add(bell(88,3,vol=0.12),L+2.95)
-for k,n in enumerate([93,96,100]): m.add(bell(n,2,vol=0.045),L+3.95+k*0.12)
-m.save(out,fade_out=0.9)
+# logo kapanışı: ayrı efekt YOK, müzik yumuşakça devam edip biter
+if send<total-0.5:
+    c=prog[ns%len(prog)]
+    m.add(pad(c,total-send+1.5,a=1.0,r=max(1.5,total-send-0.4),vol=0.12,bright=1300,seed=99),send-0.5)
+    m.add(pad([c[0]-12],total-send+1.2,a=0.8,r=max(1.2,total-send-0.4),vol=0.09,bright=260,seed=98),send-0.5)
+m.save(out,fade_out=1.4)

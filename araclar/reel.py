@@ -48,7 +48,7 @@ def main(spec_path,out):
         last=Image.open(f'{tmp}/f{n-1:05d}.jpg')
         for k,name in enumerate(lf):
             f=Image.open(os.path.join(sp['logo_end'],name)).convert('RGB')
-            if k<12: f=Image.blend(last,f,ease((k+1)/12))
+            if k<24: f=Image.blend(last,f,ease((k+1)/24))
             f.save(f'{tmp}/f{n:05d}.jpg',quality=93); n+=1
     print('frames',n,'sec',n/FPS)
     json.dump({'frames':n},open(out+'.meta.json','w'))
