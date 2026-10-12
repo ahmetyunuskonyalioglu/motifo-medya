@@ -41,5 +41,6 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 5. Ayrıntılı strateji: `STRATEJI.md`
 
 ## Takvim notları
+- 2026-10-13 18:00 – Oyster reels v3 planlandı (uuid -3683940586244323580)
 - 2026-10-29 09:00 – 29 Ekim story planlandı (Metricool uuid -5575539309169979481)
 - Sıradaki özel günler: 8 Kasım Dünya Şehircilik Günü, 10 Kasım, Yılbaşı
