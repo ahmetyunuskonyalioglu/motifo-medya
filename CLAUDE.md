@@ -11,8 +11,8 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 3. **Satış dili yok.** "DM", "bize ulaşın", hizmet listesi, fiyat yok. İşi göster. Kapanış = sadece logo / logo animasyonu.
 4. **Kamera yavaş ve derinlikli** (araclar/parallax.py – Depth Anything V2). Düz 2D kaydırma yok. Sahne ≥3,4 sn.
 5. **Müzik telifsiz ve kodla üretilir** (araclar/sesler.py, ses_reel.py). Reels'te müzik logo kapanışında da devam eder; logo kapanışına AYRI müzik/efekt konmaz.
-7. **Logo:** Ahmet'in altın logosu (`marka/logo_altin.png`) renklerine ASLA dokunulmadan, olduğu gibi kullanılır. Kapanış = beyaz zemin + dağınık, farklı yönlere dönük çok silik kabartma amblemler + logo yavaşça belirir (soldan sağa açılma/harf harf kurulma YOK). Hazır kareler: `marka/logo_kapanis_kareleri/` (araclar/logo_anim_v4.py).
 6. Özel günlerde her yıl farklı konsept; mümkünse mimari dil (çizim, ölçü, plan, cephe).
+7. **Logo:** Ahmet'in altın logosu (`marka/logo_altin.png`) renklerine ASLA dokunulmadan, olduğu gibi kullanılır. Kapanış = beyaz zemin + dağınık, farklı yönlere dönük çok silik kabartma amblemler + logo yavaşça belirir (soldan sağa açılma/harf harf kurulma YOK). Hazır kareler: `marka/logo_kapanis_kareleri/` (araclar/logo_anim_v4.py).
 
 ## Haftalık ritim
 - 1 Reels (Salı 18:00), 1 Gönderi/karusel (Perşembe 10:00), 3–4 Story (hafta içi 11:00 civarı)
