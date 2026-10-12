@@ -48,32 +48,37 @@ def band(r0,r1): m=np.zeros(alpha.shape,np.float32); m[max(0,r0-pad):r1+pad]=1; 
 mEMB=band(*EMB); mWM=band(*WM); mSW=band(*SWR); mSUB=band(*SUBR)
 mEMB[EMB[1]+pad:]=0
 ring=(rad>er*0.90)
-# filigran: büyük kabartma amblem
-am=Image.open(S+'brand/amblem_siyah.png').split()[3]
-am=am.resize((1240,int(1240*am.height/am.width)),Image.LANCZOS)
-def emboss_layer(depth):
-    a=np.asarray(am).astype(np.float32)/255
-    a=np.asarray(Image.fromarray((a*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(2.5))).astype(np.float32)/255
+# filigran: rastgele dağılmış, farklı yön ve boyutlarda çok silik kabartma amblemler
+AM0=Image.open(S+'brand/amblem_siyah.png').split()[3]
+def emb_layers(size,angle,depth):
+    a=AM0.resize((size,int(size*AM0.height/AM0.width)),Image.LANCZOS).rotate(angle,resample=Image.BICUBIC,expand=True)
+    a=np.asarray(a.filter(ImageFilter.GaussianBlur(1.6))).astype(np.float32)/255
     d=max(1,int(depth))
     hi=np.roll(np.roll(a,-d,0),-d,1); sh=np.roll(np.roll(a,d,0),d,1)
     return a,hi,sh
-EA,EH,ES=emboss_layer(4)
+rng=np.random.default_rng(29)
+PLACES=[(150,240,300),(930,190,240),(560,95,180),(80,760,260),(1010,700,330),(250,1500,320),(880,1430,280),
+        (540,1780,230),(1040,1080,200),(30,1160,210),(690,1640,160),(360,330,150),(760,420,170),(120,1840,190),(980,1880,170)]
+WMS=[]
+for i,(x,y,sz) in enumerate(PLACES):
+    ang=float(rng.uniform(0,360)); a,hi,sh=emb_layers(sz,ang,2 if sz<220 else 3)
+    t0=0.15+i*0.33+rng.uniform(0,0.2)
+    WMS.append((x,y,a,hi,sh,t0))
 def watermark(t):
-    k=ease(seg(t,0.0,DUR-0.6))          # zamanla kabarır
-    scale=1.06-0.06*k
     base=np.ones((H,W,3),np.float32)
-    # çok hafif sıcak degrade
-    yv=np.linspace(0,1,H)[:,None,None]; base-= (0.018*yv+0.004)*np.array([0.2,0.5,1.0])[None,None,:]
-    sh_=np.clip(ES-EA,0,1)*0.075*k; hi_=np.clip(EH-EA,0,1)*0.05*k; fill=EA*0.010*k
-    lay=np.zeros((ES.shape[0],ES.shape[1],3),np.float32)
-    lay[...]=-(sh_+fill)[...,None]*np.array([0.9,0.85,0.75])[None,None,:]
-    lay+=hi_[...,None]
-    li=Image.fromarray(((lay+0.5)*255).clip(0,255).astype(np.uint8))
-    nw=int(li.width*scale); li=li.resize((nw,int(li.height*scale)),Image.BICUBIC)
-    L=np.asarray(li).astype(np.float32)/255-0.5
-    px=W//2-nw//2; py=H//2-li.height//2-60
-    x0,y0=max(0,px),max(0,py); x1,y1=min(W,px+nw),min(H,py+li.height)
-    base[y0:y1,x0:x1]+=L[y0-py:y1-py,x0-px:x1-px]
+    yv=np.linspace(0,1,H)[:,None,None]; base-= (0.016*yv+0.004)*np.array([0.2,0.5,1.0])[None,None,:]
+    for (x,y,a,hi,sh,t0) in WMS:
+        k=ease(seg(t,t0,t0+2.2))
+        if k<=0: continue
+        sc_=0.92+0.08*k   # kabarma
+        sh_=np.clip(sh-a,0,1)*0.085*k; hi_=np.clip(hi-a,0,1)*0.055*k; fill=a*0.010*k
+        lay=-(sh_+fill)[...,None]*np.array([0.9,0.85,0.75])[None,None,:]+hi_[...,None]
+        if sc_!=1:
+            import cv2
+            lay=cv2.resize(lay,(max(1,int(lay.shape[1]*sc_)),max(1,int(lay.shape[0]*sc_))),interpolation=cv2.INTER_LINEAR)
+        h_,w_=lay.shape[:2]; px=int(x-w_/2); py=int(y-h_/2)
+        x0,y0=max(0,px),max(0,py); x1,y1=min(W,px+w_),min(H,py+h_)
+        if x1>x0 and y1>y0: base[y0:y1,x0:x1]+=lay[y0-py:y1-py,x0-px:x1-px]
     return np.clip(base,0,1)
 def logo_mask(t):
     M=np.zeros(alpha.shape,np.float32)
