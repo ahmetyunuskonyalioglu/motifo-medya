@@ -11,6 +11,12 @@ Her içerik paylaşılmadan önce Ahmet'in telefonuna bildirim gider; "onay" gel
 ## Tekrar yasağı
 `kullanilan_gorseller.json` içindeki her görsel (algısal hash ile) bir daha kullanılmaz. Yeni kullanılan her görsel paylaşım planlanınca listeye eklenir.
 
+## Marka dili (Ahmet'in kuralları)
+- Satış/çağrı dili YOK: "Projeniz için DM", "bize ulaşın", hizmet listesi yazılmaz. İşi göster, ulaşmak isteyen ulaşır.
+- Kapanış: sadece Motifo logosu (logo animasyonu). Açıklamalar sade, bilgi veren, şık.
+- Kamera: yavaş ve derinlikli (Depth Anything V2 ile 2.5D paralaks, araclar/parallax.py). Düz 2D kaydırma yok.
+- Müzik: telifsiz, kodla üretilen (araclar/sesler.py, ses_reel.py).
+
 ## Reels kuralları (2026 algoritması)
 - İlk 1,5 sn'de hareket/kanca; logo ile açılış YOK, logo sonda
 - 7–20 sn, her 1,5–3 sn'de kesme; 1080×1920
@@ -25,7 +31,7 @@ Her içerik paylaşılmadan önce Ahmet'in telefonuna bildirim gider; "onay" gel
 - Proje ortaklarıyla (müteahhit, YSR İnşaat vb.) Collab gönderisi
 - Öne çıkanlar: Projeler · Konut · Ticari · Süreç · İletişim
 - "Önce/Sonra", "Render → Şantiye" ve "Bir detayın hikayesi" serileri
-- Profil: bio'da hizmet + bölge + WhatsApp CTA
+- Profil: bio sade; konum + uzmanlık
 
 ## Özel günler (2026–27)
 29 Ekim · 8 Kasım Dünya Şehircilik Günü · 10 Kasım · Yılbaşı · 8 Mart · 23 Nisan · 1 Mayıs · 19 Mayıs · Bayramlar · 15 Temmuz · 30 Ağustos · Ekim 1. pazartesi Dünya Mimarlık Günü

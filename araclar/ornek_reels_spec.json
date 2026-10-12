@@ -1,0 +1,99 @@
+{
+ "crop": true,
+ "xfade": 0.6,
+ "logo_end": "/tmp/claude-0/-home-claude/8c2bb08b-0d28-593e-b9c3-4c3ec033f7cb/scratchpad/fr_logo",
+ "logo_skip": 0.1,
+ "shots": [
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/2 kopya 7.jpg",
+   "dur": 3.6,
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "dolly": 0.1,
+    "tx": 0.02
+   },
+   "kicker": "KAYSERİ · İLDEM",
+   "title": "Bir pırlanta mağazası",
+   "pos": "bottom"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/1 kopya.jpg",
+   "dur": 3.6,
+   "win": [
+    0.4,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "tx": 0.06,
+    "dolly": 0.04
+   },
+   "kicker": "MARKA",
+   "title": "İstiridyeden ilham"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/2 kopya 2.jpg",
+   "dur": 3.6,
+   "win": [
+    0.42,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "dolly": 0.09,
+    "ty": -0.01
+   },
+   "kicker": "DUVAR",
+   "title": "İnci dokusu"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/2 kopya 4.jpg",
+   "dur": 3.6,
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "tx": -0.06,
+    "dolly": 0.03
+   },
+   "kicker": "KEMERLER",
+   "title": "Kabuğun kavisi"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/2 kopya.jpg",
+   "dur": 3.6,
+   "win": [
+    0.48,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "ty": 0.03,
+    "dolly": 0.06
+   },
+   "kicker": "TAVAN",
+   "title": "Bakır bir heykel"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/OYSTER PIRLANTA/Yeni klasör/2 kopya 5.jpg",
+   "dur": 3.8,
+   "win": [
+    0.45,
+    0.5,
+    1.0
+   ],
+   "move": {
+    "tx": 0.05,
+    "dolly": 0.05
+   },
+   "kicker": "MALZEME",
+   "title": "Bakır ve sedef"
+  }
+ ]
+}
