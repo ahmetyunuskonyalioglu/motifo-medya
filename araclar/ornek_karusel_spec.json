@@ -1,12 +1,50 @@
-{"proje":"Gabon · Villa","baslik":"Gabon’da bir villa","alt":"Mimari ve iç mimari tasarım","kunye":"AFRİKA  ·  GABON  ·  KONUT",
- "slides":[
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/6.jpg"},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/9.jpg","label":"Cephe","text":"Beyaz kütleler ve ahşap yüzeyler. Derin saçaklar ve teraslar, cepheye gölge ve derinlik veriyor."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/1.jpg","label":"Dış mutfak","text":"Pergola altında ahşap bir mutfak. Havuz ve bahçeyle aynı seviyede, açık havada yaşam için."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/4.jpg","label":"Yarı açık yaşam","text":"Cam cepheler açıldığında iç ve dış tek bir mekâna dönüşüyor."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/26.jpg","label":"Yaşam alanı","text":"Gri tonlar, yumuşak dokular ve bol gün ışığı."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/18.jpg","label":"Ebeveyn yatak odası","text":"Kumaş başlık, mermer zemin ve sakin bir renk paleti."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/22.jpg","label":"Banyo","text":"Serbest duran küvet, mermer yüzeyler ve siyah çerçeveli cam bölme."},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/25.jpg","label":"Sauna","text":"Ahşap kaplama ve arkadan aydınlatılmış tuğla paneller. Evin içinde sıcak bir dinlenme köşesi.","center":[0.5,0.55]},
-  {"file":"/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/29.jpg","label":"Oyun salonu","text":"Bilardo, langırt ve bar aynı salonda. Misafir ağırlamak için tasarlandı."}
- ]}
+{
+ "proje": "Gabon · Villa",
+ "baslik": "Gabon’da bir villa",
+ "alt": "Mimari ve iç mimari tasarım",
+ "kunye": "AFRİKA  ·  GABON  ·  KONUT",
+ "slides": [
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/6.jpg"
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/9.jpg",
+   "label": "Cephe",
+   "text": "Beyaz kütleler ve ahşap yüzeyler. Derin saçaklar ve teraslar, cepheye gölge ve derinlik veriyor."
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/1.jpg",
+   "label": "Dış mutfak",
+   "text": "Pergola altında ahşap bir mutfak. Havuz ve bahçeyle aynı seviyede, açık havada yaşam için."
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/4.jpg",
+   "label": "Yarı açık yaşam",
+   "text": "Cam cepheler açıldığında iç ve dış tek bir mekâna dönüşüyor."
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/18.jpg",
+   "label": "Ebeveyn yatak odası",
+   "text": "Kumaş başlık, mermer zemin ve sakin bir renk paleti."
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/22.jpg",
+   "label": "Banyo",
+   "text": "Serbest duran küvet, mermer yüzeyler ve siyah çerçeveli cam bölme."
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/25.jpg",
+   "label": "Sauna",
+   "text": "Ahşap kaplama ve arkadan aydınlatılmış tuğla paneller. Evin içinde sıcak bir dinlenme köşesi.",
+   "center": [
+    0.5,
+    0.55
+   ]
+  },
+  {
+   "file": "/mnt/user-data/uploads/MOTİFO/PROJELER/AFRİKA/29.jpg",
+   "label": "Oyun salonu",
+   "text": "Bilardo, langırt ve bar aynı salonda. Misafir ağırlamak için tasarlandı."
+  }
+ ]
+}

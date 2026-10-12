@@ -24,6 +24,7 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - Proje konumları: Oyster Pırlanta = Kayseri İldem · Afrika = Gabon villa · Florya Mavikoru = İstanbul Florya ·
   Afra Park / Vogue / Bahçeşehir = İstanbul Bahçeşehir · YCR = Antalya Lara (Pesta Hotel) · Kıbrıs = KKTC
 - Bilinmeyen konum yazılmaz.
+- **Müştemilat:** Tasarımı düşük olan müştemilat görselleri ana ev gibi sunulmaz; ya kullanılmaz ya da "müştemilat" diye belirtilir. Bilinen: AFRİKA/26.jpg (müştemilat salonu). Emin olunmayan iç mekânlar için Ahmet'e sor.
 
 ## Araçlar
 - Derinlik modeli: `curl -sL -o /home/claude/models/da2s.onnx https://github.com/fabio-sim/Depth-Anything-ONNX/releases/download/v2.0.0/depth_anything_v2_vits.onnx` (onnxruntime kurulu)
