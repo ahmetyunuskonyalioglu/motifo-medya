@@ -385,7 +385,7 @@
   },
   {
    "kaynak": "PROJELER/BAHADIR_ARMA/ŞEFFFAF_ZOOM_2.jpg",
-   "paylasim": "taslak_arma_bim_reels",
+   "paylasim": "taslak_arma_iki_katman",
    "durum": "onay_bekliyor"
   },
   {
@@ -401,6 +401,11 @@
   {
    "kaynak": "PROJELER/BAHADIR_ARMA/PLAN_KESİT-1.jpg",
    "paylasim": "taslak_arma_bim_reels",
+   "durum": "onay_bekliyor"
+  },
+  {
+   "kaynak": "paylasimlar/taslak_arma_iki_katman/kaynak_foto.png (Arma uygulama fotoğrafı, Ahmet gönderdi)",
+   "paylasim": "taslak_arma_iki_katman",
    "durum": "onay_bekliyor"
   }
  ]
