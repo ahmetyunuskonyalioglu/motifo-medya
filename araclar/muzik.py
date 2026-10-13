@@ -1,6 +1,6 @@
 # Motifo müzik kütüphanesi — telifsiz, tamamen kodla üretilir.
 # Tarzlar: insaat (ritmik, aşamalara senkron), piyano (ambient), lofi (sıcak elektrik piyano + groove),
-#          sinematik (drone + yaylı + vuruş). Her üretimde ton/tempo/tohum değişir; kayıt: muzik_kayit.json
+#          sinematik (drone + yaylı + vuruş), keman (sıcak majör keman melodisi + yaylılar — Ahmet'in tercihi). Her üretimde ton/tempo/tohum değişir; kayıt: muzik_kayit.json
 import numpy as np, wave, json, os
 from scipy.signal import lfilter, butter
 SR=44100
@@ -147,7 +147,82 @@ def sinematik(out,dur,cuts,end_at=None,root=50,scale='minör',seed=0):
         m.add(boom(0.3),t0)
     m.add(strings(chord(root,scale,0,5),dur-end_at+1,0.14,a=0.8,r=dur-end_at,seed=9),end_at-0.5)
     m.save(out,fade=1.6,rev=0.28)
-STYLES={'insaat':insaat,'piyano':piyano,'lofi':lofi,'sinematik':sinematik}
+
+# --- keman (yay sürtmeli, legato, vibrato) ---
+from scipy.signal import iirpeak
+def _body(x):
+    y=x*0.35
+    for f,q,g in ((290,4,0.9),(480,5,0.7),(1050,3,0.5),(2600,2.5,0.6),(3400,3,0.35)):
+        b,a=iirpeak(f/(SR/2),q); y=y+lfilter(b,a,x)*g
+    return y
+def violin_line(notes,d,v=0.2,seed=0,vib=0.22,bright=5200):
+    """notes: [(midi,baş,süre)] — tek yay çizgisi, notalar arası kısa glissando."""
+    rng=np.random.default_rng(seed); n=int(d*SR); t=np.arange(n)/SR
+    m=np.full(n,np.nan); amp=np.zeros(n); onset=np.zeros(n)
+    for (mm,s,du) in notes:
+        a=int(s*SR); b=min(n,int((s+du)*SR)); 
+        if a>=n: continue
+        m[a:b]=mm; L=b-a; tt=np.arange(L)/SR
+        env=np.minimum(1,tt/min(0.18,du*0.35))*(0.82+0.18*np.sin(np.pi*np.minimum(1,tt/du)))  # yay şişmesi
+        rel=int(min(0.12,du*0.25)*SR); env[-rel:]*=np.linspace(1,0.55,rel)
+        amp[a:b]=np.maximum(amp[a:b],env); onset[a:b]=tt
+    # boşlukları önceki notayla doldur (frekans), sessiz kal (genlik)
+    last=np.nan
+    for i in range(n):
+        if np.isnan(m[i]): m[i]=last if not np.isnan(last) else 69
+        last=m[i]
+    # glissando: midi çizgisini 70 ms yumuşat
+    k=int(0.07*SR); m=np.convolve(np.pad(m,(k,k),mode='edge'),np.ones(k)/k,'same')[k:-k]
+    vibd=np.clip((onset-0.22)/0.35,0,1)*vib
+    m=m+vibd*np.sin(2*np.pi*5.4*t+rng.uniform(0,6))+0.02*np.sin(2*np.pi*0.7*t)
+    f=440*2**((m-69)/12); ph=2*np.pi*np.cumsum(f)/SR; x=0
+    for h in range(1,16):
+        x=x+np.sin(h*ph+rng.uniform(0,6))/h**1.05*(1 if h<8 else 0.6)
+    x=x*np.where(f*16>SR/2,0.7,1)
+    bow=hp(rng.standard_normal(n),2500)*0.03
+    x=_body(x+bow); x=lp(x,bright,2)
+    a=lp(amp,18,1); x=x*a
+    return x/np.abs(x).max()*v
+def _melodi(rng,root,scale,prog,beats_per_chord,beat,start=0.0,octv=0):
+    sc=SCALES[scale]; out=[]; t=start; prev=None
+    pat=[[2,1,1],[1,1,2],[1.5,0.5,2],[1,0.5,0.5,2],[3,1],[1,1,1,1],[2,0.5,0.5,1]]
+    for ci,deg in enumerate(prog):
+        ch=[deg,deg+2,deg+4]
+        rh=pat[rng.integers(len(pat))] if ci<len(prog)-1 else [4]
+        for j,r in enumerate(rh):
+            if prev is None: d_=ch[rng.integers(3)]%7+(7 if deg%7<3 else 0)
+            elif j==0 or ci==len(prog)-1:   # akor tonu, öncekine en yakın
+                c2=[c+7*k for c in ch for k in (-1,0,1)]; c2=[c for c in c2 if c!=prev] ; d_=min(c2,key=lambda c:abs(c-prev)+rng.uniform(0,1.5))
+            else: d_=prev+[-1,1,1,2,-2,-1][rng.integers(6)]
+            d_=d_-2 if d_>9 else (d_+2 if d_<0 else d_); prev=d_
+            mm=root+octv+12*(d_//7)+sc[d_%7]
+            out.append((mm,t,r*beat*0.97)); t+=r*beat
+    return out
+def keman(out,dur,cuts,end_at=None,root=62,scale='majör',bpm=80,seed=0):
+    """Sıcak, umutlu yaylı parça: keman melodisi + yaylı pad + pizzicato + yumuşak piyano."""
+    rng=np.random.default_rng(seed); m=Mix(dur); beat=60/bpm; end_at=end_at or dur
+    progs=[[0,4,5,3],[0,5,3,4],[5,3,0,4],[0,3,5,4]]; prog=progs[seed%4]
+    bar=beat*4; nb=int(np.ceil(end_at/bar)); P=[prog[i%4] for i in range(nb)]
+    for i,deg in enumerate(P):
+        t0=i*bar; c=chord(root-12,scale,deg,4)
+        m.add(strings(c,bar+1.6,0.075,a=0.9,r=1.4,bright=1700,seed=i),t0,g=1.0)
+        m.add(bass(c[0]-12,bar*0.95,0.13),t0)
+        for j in range(4):   # pizzicato
+            nn=c[[0,2,1,3][j]]+12
+            m.add(pluck(nn,0.5,0.06),t0+j*beat+0.01,pan=(j-1.5)*0.25)
+        if i%2==1: m.add(piano(c[-1]+24,3,0.07,rng),t0+beat*2,pan=0.3)
+    mel=_melodi(rng,root,scale,P[1:],4,beat,start=bar)   # ilk ölçü giriş
+    m.add(violin_line(mel,dur,0.2,seed=seed),0,pan=-0.1)
+    # ikinci keman: üçlü altta, daha sessiz, son yarıda
+    sc=SCALES[scale]; inS=lambda q:((q-root)%12) in sc
+    half=[((a-3) if inS(a-3) else (a-4),s_,d_) for (a,s_,d_) in mel if s_>end_at*0.45]
+    if half: m.add(violin_line(half,dur,0.08,seed=seed+1,vib=0.18,bright=3800),0,pan=0.25)
+    # kapanış: tonik akor uzun yaylı + keman tonikte
+    m.add(strings(chord(root-12,scale,0,5),dur-end_at+1.5,0.1,a=1.0,r=dur-end_at,bright=1600,seed=99),end_at-0.4)
+    m.add(violin_line([(root+12,0.0,dur-end_at+0.3)],dur-end_at+1.2,0.12,seed=seed+5),end_at-0.2)
+    m.save(out,fade=1.8,rev=0.32)
+
+STYLES={'insaat':insaat,'piyano':piyano,'lofi':lofi,'sinematik':sinematik,'keman':keman}
 def kaydet(kayit_path,video,stil,root,scale,seed):
     k=json.load(open(kayit_path)) if os.path.exists(kayit_path) else {'parcalar':[]}
     k['parcalar'].append({'video':video,'stil':stil,'ton':root,'mod':scale,'tohum':seed})

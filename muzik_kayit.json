@@ -20,6 +20,20 @@
    "ton": 52,
    "mod": "minör",
    "tohum": 4
+  },
+  {
+   "video": "arma_iki_katman",
+   "stil": "keman",
+   "ton": 65,
+   "mod": "majör",
+   "tohum": 2
+  },
+  {
+   "video": "bim_insaat (keman versiyonu)",
+   "stil": "keman",
+   "ton": 60,
+   "mod": "majör",
+   "tohum": 3
   }
  ]
 }
