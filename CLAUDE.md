@@ -10,9 +10,11 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
    1 yıldan eski paylaşımların görselleri sadece YENİ bir formatta (derinlikli reels, gece/gündüz geçişi, editoryal karusel) kullanılabilir.
 3. **Satış dili yok.** "DM", "bize ulaşın", hizmet listesi, fiyat yok. İşi göster. Kapanış = sadece logo / logo animasyonu.
 4. **Kamera yavaş ve derinlikli** (araclar/parallax.py – Depth Anything V2). Düz 2D kaydırma yok. Sahne ≥3,4 sn.
-5. **Müzik telifsiz ve kodla üretilir** (araclar/sesler.py, ses_reel.py). Reels'te müzik logo kapanışında da devam eder; logo kapanışına AYRI müzik/efekt konmaz.
+5. **Müzik telifsiz ve kodla üretilir** — `araclar/muzik.py` (tarzlar: insaat, piyano, lofi, sinematik). **Aynı müzik tekrar kullanılmaz:** `muzik.sonraki_stil()` ile son 3 videoda olmayan tarz seçilir, ton/mod/tohum değiştirilir, `muzik.kaydet()` ile `muzik_kayit.json`a yazılır. Reels'te müzik logo kapanışında da devam eder; kapanışa AYRI müzik/efekt konmaz.
 6. Özel günlerde her yıl farklı konsept; mümkünse mimari dil (çizim, ölçü, plan, cephe).
 7. **Logo:** Ahmet'in altın logosu (`marka/logo_altin.png`) renklerine ASLA dokunulmadan, olduğu gibi kullanılır. Kapanış = beyaz zemin + dağınık, farklı yönlere dönük çok silik kabartma amblemler + logo yavaşça belirir (soldan sağa açılma/harf harf kurulma YOK). Hazır kareler: `marka/logo_kapanis_kareleri/` (araclar/logo_anim_v4.py).
+
+8. **BİM videoları kareden kamera gezdirmeyle YAPILMAZ.** 3B motorla (`araclar/bim3d/`) bina aşama aşama inşa edilir: temel → taşıyıcı → duvar → tesisat (borular uzar) → şap → kaplama → cephe → çatı; çakışma anı röntgen moduyla gösterilir. `render.py scene.js out all <süre>` → `araclar/bim_yazi.py cfg.json` → logo kapanışı → müzik. "Aynı bina, iki katman" (render | BİM ayırıcı) için `split.py`. Gerçek proje için Archicad'den IFC/OBJ dışa aktarımı istenirse model doğrudan bu motora uyarlanabilir.
 
 ## Haftalık ritim
 - 1 Reels (Salı 18:00), 1 Gönderi/karusel (Perşembe 10:00), 3–4 Story (hafta içi 11:00 civarı)

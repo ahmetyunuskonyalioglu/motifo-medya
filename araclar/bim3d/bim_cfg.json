@@ -1,0 +1,11 @@
+{"intro":"Bir bina önce modelde kurulur","final":"Sahaya çıkmadan, modelde","end":26.0,
+ "stages":[
+ {"no":"01","name":"Temel","line":"Radye temel","t0":1.2,"t1":3.2},
+ {"no":"02","name":"Taşıyıcı sistem","line":"Kolon, kiriş ve döşeme, kat kat","t0":3.2,"t1":8.8},
+ {"no":"03","name":"Duvarlar","line":"Dış duvar, ara duvar, pencere boşlukları","t0":8.8,"t1":11.4},
+ {"no":"04","name":"Tesisat","line":"Su, atık su, elektrik, havalandırma","t0":11.4,"t1":15.2},
+ {"no":"05","name":"Şap","line":"Her katta düz bir zemin","t0":15.2,"t1":16.6},
+ {"no":"06","name":"Döşeme kaplaması","line":"Parke ve seramik, mahal listesine göre","t0":16.6,"t1":18.2},
+ {"no":"07","name":"Cephe ve doğrama","line":"Cam, ahşap kaplama, balkonlar","t0":18.2,"t1":21.4},
+ {"no":"08","name":"Çatı","line":"Ve bina tamam","t0":21.4,"t1":23.2}],
+ "clash":{"t0":13.0,"t1":13.9,"t2":14.8,"a":"Çakışma: kanal kirişin içinden geçiyor","b":"Düzeltildi: kanal 48 cm aşağı alındı"}}

@@ -1,0 +1,25 @@
+{
+ "parcalar": [
+  {
+   "video": "oyster_reel_v3",
+   "stil": "piyano",
+   "ton": 60,
+   "mod": "lidya",
+   "tohum": 0
+  },
+  {
+   "video": "bim_insaat",
+   "stil": "insaat",
+   "ton": 57,
+   "mod": "dorian",
+   "tohum": 0
+  },
+  {
+   "video": "bim_iki_katman",
+   "stil": "sinematik",
+   "ton": 52,
+   "mod": "minör",
+   "tohum": 4
+  }
+ ]
+}
