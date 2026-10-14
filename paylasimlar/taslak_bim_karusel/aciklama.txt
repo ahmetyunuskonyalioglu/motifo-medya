@@ -1,7 +1,3 @@
-Görünen cephenin arkasında, şapın içinden geçen hatlar, katları dikey geçen tesisat ve taşıyıcı sistem aynı modelde birlikte çizilir.
+Motifo’da süperpoze üç boyutta yapılır: mimari, statik ve tesisat aynı modelde.
 
-Arma'da tasarımı BİM ile eş zamanlı yürüttük: mimari, statik ve mekanik tek modelde; çakışmalar çizimde çözüldü, paftalar ve metraj aynı modelden çıktı.
-
-Kaydırın: eskiz → model → inşaat sırası → süreç.
-
-#BİM #Archicad #mimarlık #içmimarlık #tesisat #Bahçeşehir #MotifoMimarlık
+#BİM #Archicad #mimarlık #içmimarlık #MotifoMimarlık

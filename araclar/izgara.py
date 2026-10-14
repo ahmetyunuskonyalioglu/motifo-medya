@@ -452,3 +452,29 @@ def bim_eskiz_detay(src,no,name,loc,tur='BİM',kutu=None,koyu=True,zoom_hedef=No
     while d.textlength(name,font=f)>W-192: f=ImageFont.truetype(SERIF_I,f.size-4)
     d.text((92,1206),name,font=f,fill=TX,anchor='ls'); track(d,(96,1258),up(loc),ImageFont.truetype(INTER_M,27),MU,7)
     return bg
+# ================= BİM manşet kapağı: eskiz + tek cümle (ızgaradan okunur) =================
+BIM_MANSETLER=[['Süperpoze,','üç boyutta.'],['Bütçe,','ilk çizgide belli.'],['Tasarım ve uygulama,','aynı modelde.'],
+ ['Çakışma sahada değil,','modelde çözülür.'],['Her boru, yerini','inşaattan önce bilir.'],['Görünmeyeni de','tasarlıyoruz.'],
+ ['Tek model.','Tek doğru.'],['Şantiyeye sürpriz değil,','pafta gider.']]
+def bim_manset(src,satirlar,altyazi,kutu=None,koyu=True,ust='MOTİFO  ·  BİM'):
+    base=bim_eskiz_detay(src,0,'','',' ',kutu=kutu,koyu=koyu)      # görsel alanı + çerçeve
+    BG_=(24,22,20) if koyu else STONE; TX=(244,236,222) if koyu else INK; AC=GOLDT if koyu else BRONZE; MU=(170,156,136) if koyu else MUTE
+    d=ImageDraw.Draw(base)
+    d.rectangle([60,60,W-60,140],fill=BG_); d.rectangle([60,1050,W-60,H-60],fill=BG_)   # eski künyeyi temizle
+    frame_line(d,40,GOLD,2)
+    track(d,(96,96),ust,ImageFont.truetype(INTER_M,28),AC,8)
+    f=ImageFont.truetype(SERIF_I,112)
+    for s_ in satirlar:
+        while d.textlength(s_,font=f)>W-190: f=ImageFont.truetype(SERIF_I,f.size-4)
+    y=1150
+    for i,s_ in enumerate(satirlar): d.text((92,y+i*116),s_,font=f,fill=TX,anchor='ls')
+    track(d,(96,H-92),up(altyazi),ImageFont.truetype(INTER_M,24),MU,7)
+    return base
+def sade_sayfa(img,etiket,koyu=False,sayfa=None,toplam=None):
+    """İç sayfa: tam ekran görsel + tek küçük etiket."""
+    im=cover(img,W,H).convert('RGBA'); d=ImageDraw.Draw(im,'RGBA')
+    g=Image.new('L',(1,256)); [g.putpixel((0,i),int(140*max(0,(i-190)/66)**1.5)) for i in range(256)]
+    sh=Image.new('RGBA',(W,H),(14,12,10,0)); sh.putalpha(g.resize((W,H))); im.alpha_composite(sh); d=ImageDraw.Draw(im,'RGBA')
+    track(d,(80,H-90),up(etiket),ImageFont.truetype(INTER_M,26),(255,255,255,230),7)
+    if sayfa: track(d,(W-80,H-90),f'{sayfa:02d} / {toplam:02d}',ImageFont.truetype(INTER_M,26),(255,255,255,200),5,'r')
+    return im.convert('RGB')
