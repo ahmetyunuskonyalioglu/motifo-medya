@@ -397,7 +397,7 @@ def _mep_masks(a):
 def bim_eskiz_detay(src,no,name,loc,tur='BİM',kutu=None,koyu=True,zoom_hedef=None):
     BG_=(24,22,20) if koyu else STONE; AC=GOLD if koyu else BRONZE; TX=(236,228,214) if koyu else INK; MU=(170,156,136) if koyu else MUTE
     LN=np.array(GOLD if koyu else (88,70,54),np.float32); PAL=MEP_KOYU2 if koyu else MEP_KREM2
-    full=Image.open(src).convert('RGB'); 
+    full=(src if isinstance(src,Image.Image) else Image.open(src)).convert('RGB')
     if kutu: full=full.crop(kutu)
     bw,bh=W-2*96,880; full=cover(full,int(bw*1.8),int(bh*1.8))   # 1.8x çalış, sonra küçült
     a=np.asarray(full)
