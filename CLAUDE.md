@@ -35,6 +35,10 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - Üstte 3'lü sabit panorama (şimdilik Florya); zamanla başka projeyle değişebilir. Düzeni kapak tasarımı değil, sıralama kurar (koyu/açık dönüşümlü).
 - Önizleme: `araclar/profil_mock.py spec.json çıktı` (örnekler paylasimlar/izgara_tasarimi/).
 
+## Deneme hesabı
+- Instagram deneme hesabı: **@denemehesabi4212** (Ahmet'in Chrome'unda açık; Metricool'a bağlı değil). Yeni düzenler önce burada denenir.
+- Paylaşım yolu: Claude in Chrome → instagram.com → Oluştur → gizli file input'a `file_upload` (yollar repo içinden) → kırp: Orijinal (3:4) → İleri → İleri → açıklama → Paylaş. Web'de arşivleme ve sabitleme yok (telefondan yapılır). Paket: `araclar/deneme_paket.py` → paylasimlar/deneme_hesap/ (sira.json: eskiden yeniye).
+
 ## Haftalık ritim
 - 1 Reels (Salı 18:00), 1 Gönderi/karusel (Perşembe 10:00), 3–4 Story (hafta içi 11:00 civarı)
 - Saat dilimi: Europe/Istanbul. Metricool brand/blogId: 7380617

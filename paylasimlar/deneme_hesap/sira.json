@@ -1,0 +1,20 @@
+{
+ "paylasim_sirasi": [
+  "01_aden_rezidans",
+  "02_hamam",
+  "03_seçkin_mutfak",
+  "04_ycr_pesta_hotel",
+  "05_gloria_jeans",
+  "06_gabon_villası",
+  "07_hamam",
+  "08_rocca_and_beetle",
+  "09_pide_paradise",
+  "10_bim_superpoze",
+  "11_oyster_pırlanta",
+  "12_gabon_villası",
+  "13_florya_sag",
+  "14_florya_orta",
+  "15_florya_sol"
+ ],
+ "not": "Sıra en eskiden en yeniye. Son 3 Florya parçası paylaşıldıktan sonra sağ→orta→sol sırasıyla sabitlenir."
+}
