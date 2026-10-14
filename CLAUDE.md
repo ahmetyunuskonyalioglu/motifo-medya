@@ -20,7 +20,7 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 ## Instagram ızgara (profil düzeni)
 - **SEÇİLEN DÜZEN (Ahmet onayladı, 14.10.2026): 4'lü döngü** → render, render, KOYU çizim (koyu zemin + altın eskiz), KREM çizim. 3 sütunda çizimler kendiliğinden çapraz iner; "gelişigüzel ama planlı", dolu/boş dengesi. Referans: paylasimlar/izgara_tasarimi/florya_C_diyagonal.json (izgara.py `cizim(..., koyu=True/False)`).
   - Render karelerinde kapak şablonu dönüşümlü (cerceve / yok / alt_orta / dergi / kenar) — hepsi aynı olmasın.
-  - **BİM eskiz** (izgara.py `bim_eskiz`): Arma BİM görselleri koyu zeminde; yapı altın çizgi, tesisat kendi renginde kalem eskizi. Koyu çizim slotuna (koyu=True) veya krem çizim slotuna (koyu=False) girer. Renk→sistem eşlemesi bilinmediği için lejant YAZILMAZ.
+  - **BİM eskiz** (izgara.py `bim_eskiz_detay` tercih: tam çözünürlük + yakın kadraj `kutu`, kesit pochesi taramalı, bina silueti net, dikey tesisat kümelerine kesikli şaft sınırı; eski: `bim_eskiz`): Arma BİM görselleri koyu zeminde; yapı altın çizgi, tesisat kendi renginde kalem eskizi. Koyu çizim slotuna (koyu=True) veya krem çizim slotuna (koyu=False) girer. Renk→sistem eşlemesi bilinmediği için lejant YAZILMAZ.
   - BİM NOTLARI kapağı koyu çizim yerine, BİM şeffaf görsel krem çizim yerine geçebilir (döngü bozulmaz).
   - Her yeni paylaşımda döngüde sıradaki tip kullanılır; son tip `paylasimlar/izgara_sirasi.json` içinde tutulur.
 - Ahmet sade, tam ekran görsel kapakları seviyor (araclar/izgara.py `sade`/`gorsel`); "fazla tasarım" kapakları (palet, paspartu, kemer vb.) beğenmedi.

@@ -377,3 +377,78 @@ def bim_eskiz(src,no,name,loc,tur='BİM',fx=0.5,fy=0.5,zoom=1.0,koyu=True):
     d.text((92,1200),name,font=f,fill=TX,anchor='ls')
     track(d,(96,1252),up(loc),ImageFont.truetype(INTER_M,27),MU,7)
     return bg
+# ================= BİM eskiz — DETAY (tam çözünürlük, yakın kadraj, kalın tesisat) =================
+MEP_KOYU2={'kirmizi':(232,98,78),'mavi':(96,156,236),'yesil':(120,196,132),'turuncu':(236,160,72),'mor':(200,120,220)}
+MEP_KREM2={'kirmizi':(196,54,40),'mavi':(40,92,186),'yesil':(46,136,74),'turuncu':(204,120,30),'mor':(150,60,170)}
+def _mep_masks(a):
+    hsv=cv2.cvtColor(a,cv2.COLOR_RGB2HSV).astype(np.float32); h,s,v=hsv[...,0]*2,hsv[...,1]/255,hsv[...,2]/255
+    M={'kirmizi':(s>0.45)&(v>0.3)&((h<14)|(h>340)),'turuncu':(s>0.40)&(v>0.35)&(h>=14)&(h<48),
+       'yesil':(s>0.30)&(v>0.3)&(h>=85)&(h<165),'mavi':(s>0.45)&(v>0.25)&(h>=205)&(h<250),'mor':(s>0.35)&(v>0.35)&(h>=280)&(h<330)}
+    H_=a.shape[0]
+    for n,m in M.items():
+        m=m.astype(np.uint8); nl,lab,st,_=cv2.connectedComponentsWithStats(m,8)
+        keep=np.zeros(nl,bool); keep[1:]=st[1:,cv2.CC_STAT_AREA]>=(90 if n=='turuncu' else 12)
+        if n=='turuncu':   # toprak/saksı dokusu gibi benekli alanları at: boru uzun ve dolu olur
+            bw_=st[1:,cv2.CC_STAT_WIDTH]; bh_=st[1:,cv2.CC_STAT_HEIGHT]; fill=st[1:,cv2.CC_STAT_AREA]/(bw_*bh_+1e-6)
+            keep[1:]&=(np.maximum(bw_,bh_)/np.maximum(1,np.minimum(bw_,bh_))>3)|(fill>0.45)
+        if n=='mavi': keep[1:]&=~(st[1:,cv2.CC_STAT_TOP]<H_*0.30)   # gökyüzü/bulut
+        M[n]=keep[lab]
+    return M
+def bim_eskiz_detay(src,no,name,loc,tur='BİM',kutu=None,koyu=True,zoom_hedef=None):
+    BG_=(24,22,20) if koyu else STONE; AC=GOLD if koyu else BRONZE; TX=(236,228,214) if koyu else INK; MU=(170,156,136) if koyu else MUTE
+    LN=np.array(GOLD if koyu else (88,70,54),np.float32); PAL=MEP_KOYU2 if koyu else MEP_KREM2
+    full=Image.open(src).convert('RGB'); 
+    if kutu: full=full.crop(kutu)
+    bw,bh=W-2*96,880; full=cover(full,int(bw*1.8),int(bh*1.8))   # 1.8x çalış, sonra küçült
+    a=np.asarray(full)
+    # yapı çizgisi
+    g=cv2.cvtColor(a,cv2.COLOR_RGB2GRAY)
+    hsv=cv2.cvtColor(a,cv2.COLOR_RGB2HSV).astype(np.float32)
+    sky=(hsv[...,0]*2>185)&(hsv[...,0]*2<245)&(hsv[...,2]/255>0.5)&(hsv[...,1]/255>0.10)&(hsv[...,1]/255<0.6)
+    gb=cv2.GaussianBlur(g,(0,0),1.1)
+    ce=cv2.Canny(gb,22,70).astype(np.float32)/255
+    dark=(g<60).astype(np.uint8)                                  # kesit pochesi (döşeme/kolon) → kontur + tarama
+    dark=cv2.morphologyEx(dark,cv2.MORPH_OPEN,np.ones((3,3),np.uint8))
+    cont=cv2.morphologyEx(dark,cv2.MORPH_GRADIENT,np.ones((5,5),np.uint8)).astype(np.float32)
+    bina=(~sky).astype(np.uint8); bina=cv2.morphologyEx(bina,cv2.MORPH_OPEN,np.ones((9,9),np.uint8))
+    sil=cv2.morphologyEx(bina,cv2.MORPH_GRADIENT,np.ones((5,5),np.uint8)).astype(np.float32)
+    yy,xx=np.mgrid[0:a.shape[0],0:a.shape[1]]; hatch=(((xx+yy)%14)<2).astype(np.float32)*dark*0.55
+    ce=cv2.dilate(ce,np.ones((2,2),np.uint8))
+    line=np.clip(np.maximum.reduce([ce*0.85,cont,hatch]),0,1); line[sky]*=0.08
+    line=np.maximum(line,sil*0.9)
+    M=_mep_masks(a); mep=np.zeros(g.shape,bool)
+    for m in M.values(): mep|=m
+    line[cv2.dilate(mep.astype(np.uint8),np.ones((5,5),np.uint8))>0]*=0.3
+    out=np.ones(a.shape,np.float32)*np.array(BG_,np.float32)
+    out=out*(1-line[...,None]*0.9)+LN*line[...,None]*0.9
+    for n,m in M.items():
+        c=np.array(PAL[n],np.float32)
+        mk=cv2.dilate(m.astype(np.uint8),np.ones((3,3),np.uint8))       # ince boruları kalınlaştır
+        if koyu:
+            glow=cv2.GaussianBlur(mk.astype(np.float32),(0,0),5)*0.45
+            out=out*(1-glow[...,None])+c*glow[...,None]
+        body=cv2.GaussianBlur(mk.astype(np.float32),(0,0),0.8)
+        out=out*(1-body[...,None]*0.92)+c*body[...,None]*0.92
+        hl=cv2.erode(mk,np.ones((3,3),np.uint8)).astype(np.float32)*0.35   # boru parlaklık çizgisi
+        out=out*(1-hl[...,None])+np.array((255,250,240),np.float32)*hl[...,None]
+    sk=Image.fromarray(out.clip(0,255).astype(np.uint8)); ds=ImageDraw.Draw(sk)
+    ver=(M['turuncu']|M['kirmizi']|M['mavi']).astype(np.uint8)
+    ver=cv2.morphologyEx(ver,cv2.MORPH_CLOSE,np.ones((25,7),np.uint8))
+    nl,lab,st,_=cv2.connectedComponentsWithStats(ver,8)
+    for i in range(1,nl):
+        x,y,w_,h_,ar=st[i]
+        if h_>a.shape[0]*0.22 and h_>w_*4:
+            p=14; x0,y0,x1,y1=x-p,y-p,x+w_+p,y+h_+p; col=tuple(int(v) for v in (LN if not koyu else np.array(GOLD)))
+            for yy_ in range(y0,y1,22): ds.line([(x0,yy_),(x0,min(y1,yy_+12))],fill=col,width=3); ds.line([(x1,yy_),(x1,min(y1,yy_+12))],fill=col,width=3)
+            for xx_ in range(x0,x1,22): ds.line([(xx_,y0),(min(x1,xx_+12),y0)],fill=col,width=3); ds.line([(xx_,y1),(min(x1,xx_+12),y1)],fill=col,width=3)
+    sk=sk.resize((bw,bh),Image.LANCZOS)
+    bg=Image.new('RGB',(W,H),BG_); arr=np.asarray(sk).astype(np.float32)
+    yy,xx=np.mgrid[0:bh,0:bw]; mm=np.clip(np.minimum.reduce([xx/60,(bw-xx)/60,yy/40,(bh-yy)/80]),0,1)[...,None]
+    bg.paste(Image.fromarray((np.array(BG_,np.float32)*(1-mm)+arr*mm).astype(np.uint8)),(96,140))
+    d=ImageDraw.Draw(bg,'RGBA'); frame_line(d,40,GOLD+(255,),2)
+    track(d,(96,90),f'№ {no:02d}   ·   '+up(tur),ImageFont.truetype(INTER_M,28),AC,6)
+    d.line([(96,1070),(196,1070)],fill=GOLD,width=2)
+    f=ImageFont.truetype(SERIF_I,118)
+    while d.textlength(name,font=f)>W-192: f=ImageFont.truetype(SERIF_I,f.size-4)
+    d.text((92,1206),name,font=f,fill=TX,anchor='ls'); track(d,(96,1258),up(loc),ImageFont.truetype(INTER_M,27),MU,7)
+    return bg
