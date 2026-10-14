@@ -239,3 +239,33 @@ def sade(src,no,name,loc,stil='cerceve',fx=0.5,fy=0.5,zoom=1.0):
     if pad:
         bg=Image.new('RGB',(W,H),CREAM); bg.paste(im.convert('RGB'),(pad,pad)); return bg
     return im.convert('RGB')
+# ================= Tam ekran ailesi: render / eskiz / BİM — aynı künye düzeni =================
+def eskiz_tam(src,no,name,loc,fx=0.5,fy=0.5,zoom=1.0):
+    im=cover(load(src),W,H,fx,fy,zoom); s=sketch(im)
+    paper=np.array(STONE,np.float32); ink=np.array(BRONZE,np.float32)*0.5+np.array(INK,np.float32)*0.5
+    out=Image.fromarray((paper*s[...,None]+ink*(1-s[...,None])).astype(np.uint8)).convert('RGBA')
+    g=Image.new('L',(1,256)); [g.putpixel((0,i),int(235*max(0,(i-165)/91)**1.3)) for i in range(256)]
+    fade=Image.new('RGBA',(W,H),STONE+(0,)); fade.putalpha(g.resize((W,H))); out.alpha_composite(fade)
+    d=ImageDraw.Draw(out,'RGBA'); frame_line(d,40,BRONZE+(150,),2)
+    track(d,(96,H-262),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),BRONZE,6)
+    d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=INK,anchor='ls')
+    track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),MUTE,7)
+    return out.convert('RGB')
+def bolunmus(foto,no,name,loc):
+    """Arma: sol yarı BİM röntgen, sağ yarı uygulama fotoğrafı (fotoğrafa birebir oturan katman)."""
+    import importlib.util
+    spec=importlib.util.spec_from_file_location('xray',os.path.join(os.path.dirname(__file__),'arma','xray.py')); xr=importlib.util.module_from_spec(spec); spec.loader.exec_module(xr)
+    ph=Image.open(foto).convert('RGB'); S=H/ph.height
+    big=ph.resize((round(ph.width*S),H),Image.LANCZOS).filter(ImageFilter.UnsharpMask(1.2,60,2))
+    gh=xr.base_ghost(big,S).convert('RGBA'); gh.alpha_composite(xr.draw_layer(big.size,1.0,S=S))
+    ox=int(250*S); R=big.crop((ox,0,ox+W,H)); X=gh.convert('RGB').crop((ox,0,ox+W,H))
+    out=R.copy(); out.paste(X.crop((0,0,W//2,H)),(0,0)); out=out.convert('RGBA')
+    g=Image.new('L',(1,256)); [g.putpixel((0,i),int(170*max(0,(i-150)/106)**1.6)) for i in range(256)]
+    sh=Image.new('RGBA',(W,H),(14,12,10,0)); sh.putalpha(g.resize((W,H))); out.alpha_composite(sh)
+    d=ImageDraw.Draw(out,'RGBA'); d.line([(W//2,0),(W//2,H)],fill=(255,255,255,240),width=4)
+    frame_line(d,40,(255,255,255,120),2)
+    track(d,(W//2-30,96),'BİM',ImageFont.truetype(INTER_M,28),(44,100,170,255),6,'r'); track(d,(W//2+30,96),'UYGULAMA',ImageFont.truetype(INTER_M,28),(255,255,255,235),6)
+    track(d,(96,H-262),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),(255,255,255,235),6)
+    d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=(255,255,255,255),anchor='ls')
+    track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),(255,255,255,200),7)
+    return out.convert('RGB')
