@@ -231,6 +231,8 @@ def sade(src,no,name,loc,stil='cerceve',fx=0.5,fy=0.5,zoom=1.0):
     if stil=='alt_orta':
         d.text((w//2,h-118),name,font=ImageFont.truetype(SERIF_I,70),fill=(255,255,255,250),anchor='ms')
         track(d,(w//2,h-90),f'№ {no:02d}  ·  '+up(loc),ImageFont.truetype(INTER_M,22),(255,255,255,190),6,'m')
+    elif stil=='yok':
+        pass
     elif stil=='numara':
         track(d,(70,70),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),(255,255,255,230),6)
     elif stil=='kenar':

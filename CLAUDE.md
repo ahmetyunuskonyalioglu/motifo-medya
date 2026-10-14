@@ -19,6 +19,7 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 ## Instagram ızgara (profil düzeni)
 - Ahmet sade, tam ekran görsel kapakları seviyor (araclar/izgara.py `sade`/`gorsel`); "fazla tasarım" kapakları (palet, paspartu, kemer vb.) beğenmedi.
 - Aynı proje farklı görsellerle tekrar tekrar paylaşılabilir (daha çok proje varmış gibi durur); sadece aynı GÖRSEL tekrar edilmez.
+- Kapaklar HER gönderide aynı olmaz: şablon ailesi dönüşümlü kullanılır (izgara.py `tile`/`sade`: cerceve, yok=yazısız, alt_orta, dergi, kenar, eskiz, yari=yarı eskiz, BİM). Yan yana aynı şablon gelmez; aynı proje tekrarında farklı şablon + farklı görsel + farklı künye (ör. 'Bar · Ataşehir'). Ortak dil: aynı yazı tipleri, krem/altın tonlar, açık kareler (eskiz/BİM) ~her 4 gönderide 1. Örnek: paylasimlar/izgara_tasarimi/karma_sablonlar.json
 - Üstte 3'lü sabit panorama (şimdilik Florya); zamanla başka projeyle değişebilir. Düzeni kapak tasarımı değil, sıralama kurar (koyu/açık dönüşümlü).
 - Önizleme: `araclar/profil_mock.py spec.json çıktı` (örnekler paylasimlar/izgara_tasarimi/).
 
