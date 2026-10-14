@@ -18,6 +18,10 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 8. **BİM videoları kareden kamera gezdirmeyle YAPILMAZ.** 3B motorla (`araclar/bim3d/`) bina aşama aşama inşa edilir: temel → taşıyıcı → duvar → tesisat (borular uzar) → şap → kaplama → cephe → çatı; çakışma anı röntgen moduyla gösterilir. `render.py scene.js out all <süre>` → `araclar/bim_yazi.py cfg.json` → logo kapanışı → müzik. "Aynı bina, iki katman" (render | BİM ayırıcı) için `split.py`. Gerçek proje için Archicad'den IFC/OBJ dışa aktarımı istenirse model doğrudan bu motora uyarlanabilir.
 
 ## Instagram ızgara (profil düzeni)
+- **SEÇİLEN DÜZEN (Ahmet onayladı, 14.10.2026): 4'lü döngü** → render, render, KOYU çizim (koyu zemin + altın eskiz), KREM çizim. 3 sütunda çizimler kendiliğinden çapraz iner; "gelişigüzel ama planlı", dolu/boş dengesi. Referans: paylasimlar/izgara_tasarimi/florya_C_diyagonal.json (izgara.py `cizim(..., koyu=True/False)`).
+  - Render karelerinde kapak şablonu dönüşümlü (cerceve / yok / alt_orta / dergi / kenar) — hepsi aynı olmasın.
+  - BİM NOTLARI kapağı koyu çizim yerine, BİM şeffaf görsel krem çizim yerine geçebilir (döngü bozulmaz).
+  - Her yeni paylaşımda döngüde sıradaki tip kullanılır; son tip `paylasimlar/izgara_sirasi.json` içinde tutulur.
 - Ahmet sade, tam ekran görsel kapakları seviyor (araclar/izgara.py `sade`/`gorsel`); "fazla tasarım" kapakları (palet, paspartu, kemer vb.) beğenmedi.
 - Aynı proje farklı görsellerle tekrar tekrar paylaşılabilir (daha çok proje varmış gibi durur); sadece aynı GÖRSEL tekrar edilmez.
 - Kapaklar HER gönderide aynı olmaz: şablon ailesi dönüşümlü kullanılır (izgara.py `tile`/`sade`: cerceve, yok=yazısız, alt_orta, dergi, kenar, eskiz, yari=yarı eskiz, BİM). Yan yana aynı şablon gelmez; aynı proje tekrarında farklı şablon + farklı görsel + farklı künye (ör. 'Bar · Ataşehir'). Ortak dil: aynı yazı tipleri, krem/altın tonlar, açık kareler (eskiz/BİM) ~her 4 gönderide 1. Örnek: paylasimlar/izgara_tasarimi/karma_sablonlar.json
