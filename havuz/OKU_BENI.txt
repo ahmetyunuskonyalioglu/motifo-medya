@@ -1,0 +1,4 @@
+PAYLAŞIM ÖRNEKLERİ HAVUZU
+Beğendiğin Instagram örneklerinin ekran görüntülerini bu klasöre at, başka hiçbir şey yazmana gerek yok.
+Claude klasörü kontrol eder, yeni görselleri sıraya alır, Motifo diline uyarlar ve depoya (havuz/) işler.
+İşlenen görseller "islendi" alt klasörüne taşınır.

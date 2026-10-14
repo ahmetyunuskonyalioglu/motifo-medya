@@ -1,7 +1,7 @@
 # Motifo Mimarlık – Sosyal medya belleği (claude.ai Proje bilgisi için)
 
 Bu dosya, Claude ile yapılan tüm sosyal medya çalışmalarının özetidir. Ayrıntılı ve güncel kurallar:
-GitHub deposu ahmetyunuskonyalioglu/motifo-medya → CLAUDE.md (asıl kaynak). Örnek havuzu: havuz/ klasörü.
+GitHub deposu ahmetyunuskonyalioglu/motifo-medya → CLAUDE.md (asıl kaynak). Örnek havuzu: masaüstü MOTİFO\PAYLAŞIM ÖRNEKLERİ HAVUZU (Ahmet sadece görsel atar) → depoda havuz/.
 
 ## Değişmez kurallar
 - Onaysız paylaşım yok; her içerik önce Ahmet'e gösterilir.
