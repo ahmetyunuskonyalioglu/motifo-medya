@@ -502,3 +502,14 @@ def bim_aciklamali(img,notlar,kutular=(),baslik='BİM  ·  ARMA',sayfa=None,topl
     track(d,(80,70),baslik,ImageFont.truetype(INTER_M,26),BRONZE,7)
     if sayfa: track(d,(W-80,70),f'{sayfa:02d} / {toplam:02d}',ImageFont.truetype(INTER_M,26),BRONZE,5,'r')
     return im.convert('RGB')
+# ================= Reels kapağı (9:16; ızgarada görünen orta 3:4 bölgede çerçeve + künye) =================
+def reel_kapak(src_img,no,name,loc,fx=0.5,fy=0.5):
+    RW,RH=1080,1920; y0=(RH-H)//2
+    im=cover(src_img,RW,RH,fx,fy).convert('RGBA')
+    g=Image.new('L',(1,256)); [g.putpixel((0,i),int(170*max(0,(i-150)/106)**1.6)) for i in range(256)]
+    sh=Image.new('RGBA',(RW,H),(14,12,10,0)); sh.putalpha(g.resize((RW,H))); im.alpha_composite(sh,(0,y0))
+    d=ImageDraw.Draw(im,'RGBA'); d.rectangle([40,y0+40,RW-40,y0+H-40],outline=(255,255,255,120),width=2)
+    track(d,(96,y0+H-262),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),(255,255,255,235),6)
+    d.text((92,y0+H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=(255,255,255,255),anchor='ls')
+    track(d,(96,y0+H-128),up(loc),ImageFont.truetype(INTER_M,26),(255,255,255,200),7)
+    return im.convert('RGB')

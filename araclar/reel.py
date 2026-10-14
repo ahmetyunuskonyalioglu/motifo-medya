@@ -46,7 +46,10 @@ def main(spec_path,out):
     sp['_toplam']=sum(sh['dur'] for sh in sp['shots'])-sp.get('xfade',0.5)*(len(sp['shots'])-1)
     if sp.get('golge_yok'): globals()['G'][:]=0
     for si,sh in enumerate(sp['shots']):
-        im=load(sh['file'],sp.get('crop',True)); N=int(sh['dur']*FPS)
+        if sp.get('sr'):
+            import sr as _sr; im=load(_sr.buyut(sh['file']),False)
+        else: im=load(sh['file'],sp.get('crop',True))
+        N=int(sh['dur']*FPS)
         frames=list(shot_frames(im,tuple(sh['win']),N,sh['move']))
         for i,f in enumerate(frames):
             f=overlay(shade(f),sh.get('kicker',''),sh.get('title',''),i/FPS,sh['dur'],sh.get('pos','top'))

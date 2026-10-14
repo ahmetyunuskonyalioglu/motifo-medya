@@ -60,6 +60,8 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - **Müştemilat:** Tasarımı düşük olan müştemilat görselleri ana ev gibi sunulmaz; ya kullanılmaz ya da "müştemilat" diye belirtilir. Bilinen: AFRİKA/26.jpg (müştemilat salonu). Emin olunmayan iç mekânlar için Ahmet'e sor.
 
 ## Araçlar
+- **Netlik:** küçük kaynaklar `araclar/sr.py` (Real-ESRGAN x4, torch'suz numpy; ağırlık /home/claude/models/realesr-general-x4v3.pth, GitHub release'ten curl ile) ile büyütülür; reel spec'te `"sr": true`. Yakınlaştırılmış kadrajlar ASLA büyütmesiz kullanılmaz.
+- **Reels müziği:** detay/iç mekân reels'inde `muzik.keman_ritmik` (~118 BPM, yumuşak 4/4 + bas + keman; referans havuz 2026-10-15_01). Reels kapağı `izgara.reel_kapak` (9:16, ortadaki 3:4'te çerçeve + künye), IG web'de 'Kapak fotoğrafı → Bilgisayardan seç' ile yüklenir.
 - Derinlik modeli: `curl -sL -o /home/claude/models/da2s.onnx https://github.com/fabio-sim/Depth-Anything-ONNX/releases/download/v2.0.0/depth_anything_v2_vits.onnx` (onnxruntime kurulu)
 - `araclar/reel.py spec.json out` → kareler; `araclar/ses_reel.py` → müzik; ffmpeg ile birleştir (örnek: `araclar/ornek_reels_spec.json`)
 - `araclar/karusel.py spec.json outdir` → 1080x1350 editoryal karusel (örnek: `araclar/ornek_karusel_spec.json`)

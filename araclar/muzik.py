@@ -234,3 +234,29 @@ def sonraki_stil(kayit_path,uygun):
     for s in uygun:
         if s not in son: return s
     return uygun[0]
+# --- keman_ritmik: referans (havuz 2026-10-15_01) gibi ~118 BPM, yumuşak 4/4 vuruş + bas groove + keman ---
+def keman_ritmik(out,dur,cuts=None,end_at=None,root=62,scale='minör',bpm=118,seed=0):
+    rng=np.random.default_rng(seed); m=Mix(dur); beat=60/bpm; end_at=end_at or dur
+    progs=[[0,5,3,4],[0,3,5,4],[5,3,0,4],[0,4,5,3]]; prog=progs[seed%4]; bar=beat*4
+    nb=int(np.ceil(end_at/bar)); P=[prog[(i//1)%4] for i in range(nb)]
+    for i in range(int(end_at/beat)):
+        t=i*beat; b=i//4
+        m.add(kick(0.34 if b>0 else 0.0),t)                          # ilk ölçü vuruşsuz giriş
+        m.add(hat(0.05,False,seed=i),t+beat/2)
+        if i%4 in (1,3) and b>0: m.add(hat(0.035,True,seed=i+3),t)
+        c=chord(root-12,scale,P[min(b,nb-1)],4)
+        if i%4==0:
+            m.add(strings(c,bar+0.8,0.05,a=0.4,r=0.8,bright=1500,seed=b),t)
+        # senkoplu bas
+        for off,nn in ((0,c[0]-12),(0.75,c[0]-12),(1.5,c[0])):
+            if i%2==0: m.add(bass(nn,beat*0.42,0.22),t+off*beat)
+        # pizzicato arpej (8'lik)
+        for k in range(2):
+            m.add(pluck(c[(i*2+k)%4]+12,0.35,0.05),t+k*beat/2,pan=(k-0.5)*0.4)
+    P2=[p for p in P[2:] for _ in (0,1)]
+    mel=_melodi(rng,root,scale,P2,4,beat/2,start=bar*2)          # 2. ölçüden sonra keman, 8'lik ritim
+    m.add(violin_line(mel,dur,0.17,seed=seed,vib=0.16),0,pan=-0.1)
+    m.add(strings(chord(root-12,scale,0,5),dur-end_at+1.2,0.08,a=0.6,r=dur-end_at,bright=1500,seed=77),end_at-0.3)
+    m.add(violin_line([(root+12,0.0,dur-end_at+0.2)],dur-end_at+1.0,0.1,seed=seed+5),end_at-0.2)
+    m.save(out,fade=1.6,rev=0.22)
+STYLES['keman_ritmik']=keman_ritmik
