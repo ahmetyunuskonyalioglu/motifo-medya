@@ -260,3 +260,26 @@ def keman_ritmik(out,dur,cuts=None,end_at=None,root=62,scale='minör',bpm=118,se
     m.add(violin_line([(root+12,0.0,dur-end_at+0.2)],dur-end_at+1.0,0.1,seed=seed+5),end_at-0.2)
     m.save(out,fade=1.6,rev=0.22)
 STYLES['keman_ritmik']=keman_ritmik
+# --- deep_house: referans (havuz 2026-10-15_01) — ~116 BPM 4/4 kick, sıcak sub bas, Rhodes akor vuruşları, seyrek hat, A minör ---
+def deep_house(out,dur,cuts=None,end_at=None,root=57,scale='minör',bpm=116.5,seed=0):
+    rng=np.random.default_rng(seed); m=Mix(dur); beat=60/bpm; end_at=end_at or dur; bar=beat*4
+    progs=[[0,5,2,6],[0,3,5,4],[0,5,3,6],[5,3,0,6]]; prog=progs[seed%4]
+    nbeat=int(end_at/beat)+1
+    for i in range(nbeat):
+        t=i*beat; b=i//4; c=chord(root-12,scale,prog[b%4],4)
+        m.add(kick(0.42),t)
+        m.add(hat(0.035,True,seed=i),t+beat/2)
+        if i%2==1: m.add(hat(0.022,False,seed=i+9),t+beat*0.75)
+        # sub bas: senkop (1, 1&a, 2&)
+        for off,mul in ((0.0,1),(0.75,1),(1.5,0.8)):
+            if i%2==0: m.add(lp(bass(c[0]-12,beat*0.45,0.26*mul),420),t+off*beat)
+        # Rhodes akor vuruşu: her ölçüde 2. ve 4. vuruşun sonu (offbeat stab)
+        if i%4 in (1,3):
+            for j,nn in enumerate(c): m.add(lp(rhodes(nn+12,beat*0.9,0.075),2600),t+beat*0.5+j*0.004,pan=(j-1.5)*0.2)
+        if i%4==0: m.add(strings(c,bar+0.5,0.035,a=0.6,r=0.6,bright=1100,seed=b),t)
+    # tek akorlu sıcak kuyruk (logo boyunca)
+    c=chord(root-12,scale,0,4)
+    m.add(strings(c,dur-end_at+1.0,0.06,a=0.5,r=dur-end_at,bright=1200,seed=99),end_at-0.2)
+    for j,nn in enumerate(c): m.add(rhodes(nn+12,3.0,0.08),end_at+j*0.01)
+    m.save(out,fade=1.4,rev=0.16)
+STYLES['deep_house']=deep_house

@@ -1,0 +1,271 @@
+{
+ "bpm": 116.5,
+ "sabit_yazi": "tasarlanmış sessizlik.",
+ "logo_end": "/home/claude/motifo-medya/marka/logo_kapanis_kareleri",
+ "kesmeler": [
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/8.jpg",
+   "win": [
+    0.62,
+    0.4,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.06
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/7.jpg",
+   "win": [
+    0.3,
+    0.45,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/4.jpg",
+   "win": [
+    0.85,
+    0.5,
+    2.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/3.jpg",
+   "win": [
+    0.45,
+    0.5,
+    1.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "tx": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/11.jpg",
+   "win": [
+    0.2,
+    0.4,
+    1.9
+   ],
+   "vurus": 0.5,
+   "move": {
+    "ty": 0.02
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/8.jpg",
+   "win": [
+    0.6,
+    0.5,
+    1.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.04
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/9.jpg",
+   "win": [
+    0.7,
+    0.5,
+    1.2
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/1.jpg",
+   "win": [
+    0.3,
+    0.5,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.06
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/2.jpg",
+   "win": [
+    0.5,
+    0.5,
+    1.1
+   ],
+   "vurus": 0.5,
+   "move": {
+    "tx": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/5.jpg",
+   "win": [
+    0.6,
+    0.45,
+    1.8
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/6.jpg",
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/10.jpg",
+   "win": [
+    0.4,
+    0.5,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.06
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/3.jpg",
+   "win": [
+    0.75,
+    0.4,
+    2.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "ty": -0.02
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/7.jpg",
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/4.jpg",
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.04
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/11.jpg",
+   "win": [
+    0.5,
+    0.5,
+    1.0
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/1.jpg",
+   "win": [
+    0.6,
+    0.5,
+    1.0
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.04
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/9.jpg",
+   "win": [
+    0.35,
+    0.5,
+    1.8
+   ],
+   "vurus": 0.5,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/5.jpg",
+   "win": [
+    0.4,
+    0.5,
+    1.0
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/6.jpg",
+   "win": [
+    0.3,
+    0.5,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "ty": 0.02
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/2.jpg",
+   "win": [
+    0.25,
+    0.45,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/SHOWROOM/8.jpg",
+   "win": [
+    0.45,
+    0.32,
+    1.7
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.07
+   }
+  }
+ ]
+}
