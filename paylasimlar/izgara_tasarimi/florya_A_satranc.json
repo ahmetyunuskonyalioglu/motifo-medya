@@ -1,0 +1,163 @@
+{
+ "profil": {
+  "kullanici": "motifomimarlik",
+  "ad": "Motifo Mimarlık",
+  "sayilar": [
+   [
+    "52",
+    "gönderi"
+   ],
+   [
+    "1.248",
+    "takipçi"
+   ],
+   [
+    "186",
+    "takip"
+   ]
+  ],
+  "kategori": "Mimarlık Firması",
+  "bio": [
+   "Mimarlık · İç Mimarlık · BİM",
+   "Konut, ticari mekân ve ofis projeleri",
+   "İstanbul"
+  ]
+ },
+ "one_cikan": [
+  {
+   "ad": "Konut",
+   "src": "AFRİKA/10.jpg"
+  },
+  {
+   "ad": "Ticari",
+   "src": "OYSTER PIRLANTA/1.jpg"
+  },
+  {
+   "ad": "Yeme-İçme",
+   "src": "GLORİA JEANS/5.jpg"
+  },
+  {
+   "ad": "BİM",
+   "src": "BAHADIR_ARMA/A-A_KESİTİ-ŞEFFAF.jpg"
+  },
+  {
+   "ad": "Hamam",
+   "src": "AVANOS HAMAM/19.jpg"
+  }
+ ],
+ "izgara": [
+  {
+   "tip": "panorama",
+   "src": "FLORYA MAVİKORU/1 gece.jpg",
+   "no": 1,
+   "ad": "Florya Mavikoru",
+   "yer": "İstanbul Florya",
+   "koyu": true,
+   "pin": true
+  },
+  {
+   "tip": "gorsel",
+   "src": "AFRİKA/9.jpg",
+   "no": 24,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "ikon": "reel",
+   "fx": 0.45
+  },
+  {
+   "tip": "cizim",
+   "src": "GLORİA JEANS/2.jpg",
+   "no": 23,
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "tur": "Yeme-İçme",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "gorsel",
+   "src": "OYSTER PIRLANTA/13.jpg",
+   "no": 22,
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "ikon": "reel"
+  },
+  {
+   "tip": "cizim",
+   "src": "AFRİKA/12.jpg",
+   "no": 21,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "tur": "Konut",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "gorsel",
+   "src": "ROCCA AND BEETLE/8.jpg",
+   "no": 20,
+   "ad": "Rocca and Beetle",
+   "yer": "Ataşehir, İstanbul",
+   "ikon": "reel",
+   "fx": 0.4
+  },
+  {
+   "tip": "cizim",
+   "src": "PİDECİ/8.jpg",
+   "no": 19,
+   "ad": "Pide Paradise",
+   "yer": "Uçhisar, Kapadokya",
+   "tur": "Yeme-İçme",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "gorsel",
+   "src": "AVANOS HAMAM/19.jpg",
+   "no": 18,
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "ikon": "reel"
+  },
+  {
+   "tip": "cizim",
+   "src": "OYSTER PIRLANTA/1.jpg",
+   "no": 17,
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "tur": "Mağaza",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "gorsel",
+   "src": "YCR CONSTRACT, ANTALYA LARA/1.jpg",
+   "no": 16,
+   "ad": "YCR Pesta Hotel",
+   "yer": "Antalya Lara",
+   "ikon": "reel"
+  },
+  {
+   "tip": "cizim",
+   "src": "AVANOS HAMAM/16.jpg",
+   "no": 15,
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "tur": "Ticari",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "gorsel",
+   "src": "SHOWROOM/10.jpg",
+   "no": 14,
+   "ad": "Seçkin Mutfak",
+   "yer": "Mobilya showroomu",
+   "ikon": "reel"
+  },
+  {
+   "tip": "cizim",
+   "src": "ADEN REZİDANS/3.jpg",
+   "no": 13,
+   "ad": "Aden Rezidans",
+   "yer": "Konut",
+   "tur": "Cephe",
+   "ikon": "karusel"
+  }
+ ]
+}

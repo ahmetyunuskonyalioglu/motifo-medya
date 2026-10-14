@@ -1,0 +1,170 @@
+{
+ "profil": {
+  "kullanici": "motifomimarlik",
+  "ad": "Motifo Mimarlık",
+  "sayilar": [
+   [
+    "52",
+    "gönderi"
+   ],
+   [
+    "1.248",
+    "takipçi"
+   ],
+   [
+    "186",
+    "takip"
+   ]
+  ],
+  "kategori": "Mimarlık Firması",
+  "bio": [
+   "Mimarlık · İç Mimarlık · BİM",
+   "Konut, ticari mekân ve ofis projeleri",
+   "İstanbul"
+  ]
+ },
+ "one_cikan": [
+  {
+   "ad": "Konut",
+   "src": "AFRİKA/10.jpg"
+  },
+  {
+   "ad": "Ticari",
+   "src": "OYSTER PIRLANTA/1.jpg"
+  },
+  {
+   "ad": "Yeme-İçme",
+   "src": "GLORİA JEANS/5.jpg"
+  },
+  {
+   "ad": "BİM",
+   "src": "BAHADIR_ARMA/A-A_KESİTİ-ŞEFFAF.jpg"
+  },
+  {
+   "ad": "Hamam",
+   "src": "AVANOS HAMAM/19.jpg"
+  }
+ ],
+ "izgara": [
+  {
+   "tip": "panorama",
+   "src": "FLORYA MAVİKORU/1 gece.jpg",
+   "no": 1,
+   "ad": "Florya Mavikoru",
+   "yer": "İstanbul Florya",
+   "koyu": true,
+   "pin": true
+  },
+  {
+   "tip": "pafta",
+   "src": "AFRİKA/9.jpg",
+   "no": 24,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "tur": "Konut",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "BAHADIR_ARMA/A-A_KESİTİ-ŞEFFAF.jpg",
+   "no": 23,
+   "ad": "Arma",
+   "yer": "İstanbul Bahçeşehir",
+   "tur": "BİM · Kesit",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "pafta",
+   "src": "OYSTER PIRLANTA/13.jpg",
+   "no": 22,
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "tur": "Mağaza",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "AVANOS HAMAM/16.jpg",
+   "no": 21,
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "tur": "Ticari",
+   "cizim": true,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "pafta",
+   "src": "GLORİA JEANS/4.jpg",
+   "no": 20,
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "tur": "Yeme-İçme",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "PİDECİ/8.jpg",
+   "no": 19,
+   "ad": "Pide Paradise",
+   "yer": "Uçhisar, Kapadokya",
+   "tur": "Restoran",
+   "cizim": true,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "pafta",
+   "src": "ROCCA AND BEETLE/2.jpg",
+   "no": 18,
+   "ad": "Rocca and Beetle",
+   "yer": "Ataşehir, İstanbul",
+   "tur": "Restoran",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "BAHADIR_ARMA/ŞEFFAF_BEKLİ_KULLANILIR.jpg",
+   "no": 17,
+   "ad": "Arma",
+   "yer": "İstanbul Bahçeşehir",
+   "tur": "BİM · Tesisat",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "pafta",
+   "src": "KIBRIS/3.jpg",
+   "no": 16,
+   "ad": "Kıbrıs",
+   "yer": "KKTC",
+   "tur": "İç mimari",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "AFRİKA/12.jpg",
+   "no": 15,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "tur": "Konut",
+   "cizim": true,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "pafta",
+   "src": "SHOWROOM/10.jpg",
+   "no": 14,
+   "ad": "Seçkin Mutfak",
+   "yer": "Mobilya showroomu",
+   "tur": "Ticari",
+   "ikon": "reel"
+  },
+  {
+   "tip": "pafta",
+   "src": "ADEN REZİDANS/3.jpg",
+   "no": 13,
+   "ad": "Aden Rezidans",
+   "yer": "Konut",
+   "tur": "Cephe",
+   "ikon": "karusel"
+  }
+ ]
+}

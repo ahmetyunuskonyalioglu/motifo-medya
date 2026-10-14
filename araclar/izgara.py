@@ -51,24 +51,25 @@ def gorsel(src,no,name,loc,fx=0.5,fy=0.5,zoom=1.0):
     track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),(255,255,255,200),7)
     return im.convert('RGB')
 # --- B: çizim / künye kapağı ---
-def cizim(src,no,name,loc,tur,fx=0.5,fy=0.5,zoom=1.0):
-    bg=Image.new('RGB',(W,H),STONE); d=ImageDraw.Draw(bg,'RGBA')
+def cizim(src,no,name,loc,tur,fx=0.5,fy=0.5,zoom=1.0,koyu=False):
+    STONE_=(30,28,26) if koyu else STONE; INK_=(236,228,214) if koyu else INK; MUTE_=(170,156,136) if koyu else MUTE; BR_=GOLD if koyu else BRONZE
+    bg=Image.new('RGB',(W,H),STONE_); d=ImageDraw.Draw(bg,'RGBA')
     bw,bh=W-2*96,820
     im=cover(load(src),bw,bh,fx,fy,zoom); s=sketch(im)
-    ink=np.array(BRONZE,np.float32)*0.55+np.array(INK,np.float32)*0.45
-    paper=np.array(STONE,np.float32)
+    ink=np.array(GOLD,np.float32) if koyu else np.array(BRONZE,np.float32)*0.55+np.array(INK,np.float32)*0.45
+    paper=np.array(STONE_,np.float32)
     arr=paper*s[...,None]+ink*(1-s[...,None])
     # kenarlara doğru eriyen çizim
     yy,xx=np.mgrid[0:bh,0:bw]; m=np.clip(np.minimum.reduce([xx/80,(bw-xx)/80,yy/60,(bh-yy)/80]),0,1)[...,None]
     arr=paper*(1-m)+arr*m
     bg.paste(Image.fromarray(arr.astype(np.uint8)),(96,150))
     frame_line(d,40,GOLD+(255,),2)
-    track(d,(96,90),f'№ {no:02d}   ·   '+up(tur),ImageFont.truetype(INTER_M,28),BRONZE,6)
+    track(d,(96,90),f'№ {no:02d}   ·   '+up(tur),ImageFont.truetype(INTER_M,28),BR_,6)
     d.line([(96,1050),(196,1050)],fill=GOLD,width=2)
     f=ImageFont.truetype(SERIF_I,118)
     while d.textlength(name,font=f)>W-192: f=ImageFont.truetype(SERIF_I,f.size-4)
-    d.text((92,1196),name,font=f,fill=INK,anchor='ls')
-    track(d,(96,1250),up(loc),ImageFont.truetype(INTER_M,27),MUTE,7)
+    d.text((92,1196),name,font=f,fill=INK_,anchor='ls')
+    track(d,(96,1250),up(loc),ImageFont.truetype(INTER_M,27),MUTE_,7)
     return bg
 # --- sabitlenmiş marka karesi ---
 def marka(genislik=700):
