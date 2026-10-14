@@ -16,6 +16,12 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 
 8. **BİM videoları kareden kamera gezdirmeyle YAPILMAZ.** 3B motorla (`araclar/bim3d/`) bina aşama aşama inşa edilir: temel → taşıyıcı → duvar → tesisat (borular uzar) → şap → kaplama → cephe → çatı; çakışma anı röntgen moduyla gösterilir. `render.py scene.js out all <süre>` → `araclar/bim_yazi.py cfg.json` → logo kapanışı → müzik. "Aynı bina, iki katman" (render | BİM ayırıcı) için `split.py`. Gerçek proje için Archicad'den IFC/OBJ dışa aktarımı istenirse model doğrudan bu motora uyarlanabilir.
 
+## Instagram ızgara (profil düzeni)
+- Ahmet sade, tam ekran görsel kapakları seviyor (araclar/izgara.py `sade`/`gorsel`); "fazla tasarım" kapakları (palet, paspartu, kemer vb.) beğenmedi.
+- Aynı proje farklı görsellerle tekrar tekrar paylaşılabilir (daha çok proje varmış gibi durur); sadece aynı GÖRSEL tekrar edilmez.
+- Üstte 3'lü sabit panorama (şimdilik Florya); zamanla başka projeyle değişebilir. Düzeni kapak tasarımı değil, sıralama kurar (koyu/açık dönüşümlü).
+- Önizleme: `araclar/profil_mock.py spec.json çıktı` (örnekler paylasimlar/izgara_tasarimi/).
+
 ## Haftalık ritim
 - 1 Reels (Salı 18:00), 1 Gönderi/karusel (Perşembe 10:00), 3–4 Story (hafta içi 11:00 civarı)
 - Saat dilimi: Europe/Istanbul. Metricool brand/blogId: 7380617

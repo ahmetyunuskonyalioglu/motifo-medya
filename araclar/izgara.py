@@ -219,3 +219,23 @@ def sb_gorsel(src,no,name,loc,renkli=False,fx=0.5,fy=0.5,zoom=1.0):
     g=np.clip((g-128)*1.08+128,0,255)[...,None]
     tone=np.array([1.04,1.0,0.94],np.float32)
     return Image.fromarray(np.clip(g*tone,0,255).astype(np.uint8))
+# ================= Sade varyantlar (tam ekran görsel, en az müdahale) =================
+def sade(src,no,name,loc,stil='cerceve',fx=0.5,fy=0.5,zoom=1.0):
+    if stil=='cerceve': return gorsel(src,no,name,loc,fx,fy,zoom)
+    pad=30 if stil=='kenar' else 0
+    im=cover(load(src),W-2*pad,H-2*pad,fx,fy,zoom).convert('RGBA')
+    if stil in ('alt_orta','kenar'):
+        g=Image.new('L',(1,256)); [g.putpixel((0,i),int(150*max(0,(i-170)/86)**1.8)) for i in range(256)]
+        sh=Image.new('RGBA',im.size,(12,10,8,0)); sh.putalpha(g.resize(im.size)); im.alpha_composite(sh)
+    d=ImageDraw.Draw(im,'RGBA'); w,h=im.size
+    if stil=='alt_orta':
+        d.text((w//2,h-118),name,font=ImageFont.truetype(SERIF_I,70),fill=(255,255,255,250),anchor='ms')
+        track(d,(w//2,h-90),f'№ {no:02d}  ·  '+up(loc),ImageFont.truetype(INTER_M,22),(255,255,255,190),6,'m')
+    elif stil=='numara':
+        track(d,(70,70),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),(255,255,255,230),6)
+    elif stil=='kenar':
+        track(d,(60,h-150),f'№ {no:02d}',ImageFont.truetype(INTER_M,26),(255,255,255,220),6)
+        d.text((56,h-70),name,font=ImageFont.truetype(SERIF_I,78),fill=(255,255,255,255),anchor='ls')
+    if pad:
+        bg=Image.new('RGB',(W,H),CREAM); bg.paste(im.convert('RGB'),(pad,pad)); return bg
+    return im.convert('RGB')
