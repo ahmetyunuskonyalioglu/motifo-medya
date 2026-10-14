@@ -269,3 +269,41 @@ def bolunmus(foto,no,name,loc):
     d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=(255,255,255,255),anchor='ls')
     track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),(255,255,255,200),7)
     return out.convert('RGB')
+# ================= Tam ekran — stil varyantları (tek fonksiyon) =================
+GOLDT=(226,196,140)
+def _base(kind,src,fx=0.5,fy=0.5,zoom=1.0):
+    im=cover(load(src),W,H,fx,fy,zoom)
+    if kind=='eskiz' or kind=='yari':
+        s=sketch(im); paper=np.array(STONE,np.float32); ink=np.array(BRONZE,np.float32)*0.5+np.array(INK,np.float32)*0.5
+        sk=Image.fromarray((paper*s[...,None]+ink*(1-s[...,None])).astype(np.uint8))
+        if kind=='eskiz': return sk,True
+        out=im.copy(); out.paste(sk.crop((0,0,W//2,H)),(0,0)); return out,False
+    return im,False
+def tile(kind,src,no,name,loc,stil='altin',fx=0.5,fy=0.5,zoom=1.0):
+    im,acik=_base(kind,src,fx,fy,zoom); im=im.convert('RGBA'); d=ImageDraw.Draw(im,'RGBA')
+    if kind=='yari': d.line([(W//2,0),(W//2,H)],fill=GOLD+(255,),width=3)
+    txt=INK if acik else (255,255,255); mu=MUTE if acik else (255,255,255)
+    if stil=='altin':
+        if not acik:
+            g=Image.new('L',(1,256)); [g.putpixel((0,i),int(185*max(0,(i-150)/106)**1.6)) for i in range(256)]
+            sh=Image.new('RGBA',(W,H),(14,12,10,0)); sh.putalpha(g.resize((W,H))); im.alpha_composite(sh); d=ImageDraw.Draw(im,'RGBA')
+        col=BRONZE if acik else GOLDT
+        frame_line(d,40,col+(200,),2)
+        track(d,(96,H-262),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),col,6)
+        d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=(txt if acik else (250,244,232)),anchor='ls')
+        track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),col,7)
+    elif stil=='dergi':
+        if not acik:
+            g=Image.new('L',(1,256)); [g.putpixel((0,i),int(150*max(0,(90-i)/90)**1.5)) for i in range(256)]
+            sh=Image.new('RGBA',(W,H),(14,12,10,0)); sh.putalpha(g.resize((W,H))); im.alpha_composite(sh); d=ImageDraw.Draw(im,'RGBA')
+        track(d,(80,84),f'№ {no:02d}   —   '+up(loc),ImageFont.truetype(INTER_M,24),mu+(220,),6)
+        d.text((76,210),name,font=ImageFont.truetype(SERIF_I,92),fill=txt+(255,),anchor='ls')
+    else:  # 'cerceve' (beğenilen hamam karesi)
+        if not acik:
+            g=Image.new('L',(1,256)); [g.putpixel((0,i),int(170*max(0,(i-150)/106)**1.6)) for i in range(256)]
+            sh=Image.new('RGBA',(W,H),(14,12,10,0)); sh.putalpha(g.resize((W,H))); im.alpha_composite(sh); d=ImageDraw.Draw(im,'RGBA')
+        frame_line(d,40,(BRONZE if acik else (255,255,255))+(130,),2)
+        track(d,(96,H-262),f'№ {no:02d}',ImageFont.truetype(INTER_M,30),(BRONZE if acik else (255,255,255))+(235,),6)
+        d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=txt+(255,),anchor='ls')
+        track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),mu+(200,),7)
+    return im.convert('RGB')

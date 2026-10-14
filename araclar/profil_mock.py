@@ -18,6 +18,7 @@ def tiles(plan,P):
         if t['tip']=='pafta':
             out.append((pafta(P+t['src'],t['no'],t['ad'],t['yer'],t['tur'],t.get('cizim',False),t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0)),t)); continue
         k=dict(fx=t.get('fx',0.5),fy=t.get('fy',0.5),zoom=t.get('zoom',1.0))
+        if t['tip']=='tile': out.append((tile(t['tur_'],P+t['src'],t['no'],t['ad'],t['yer'],t.get('stil','altin'),**k),t)); continue
         if t['tip']=='eskiz': out.append((eskiz_tam(P+t['src'],t['no'],t['ad'],t['yer'],**k),t)); continue
         if t['tip']=='bolunmus': out.append((bolunmus(P+t['src'],t['no'],t['ad'],t['yer']),t)); continue
         if t['tip']=='sade': out.append((sade(P+t['src'],t['no'],t['ad'],t['yer'],t.get('stil','cerceve'),**k),t)); continue
