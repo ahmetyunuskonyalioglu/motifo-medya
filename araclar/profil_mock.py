@@ -8,6 +8,15 @@ SW=1170; GAP=3; TW=(SW-2*GAP)//3; TH=TW*4//3
 def tiles(plan,P):
     out=[]
     for t in plan:
+        if t['tip']=='panorama':
+            ims=panorama(P+t['src'],t['no'],t['ad'],t['yer'],t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0),t.get('koyu',False))
+            for k,im in enumerate(ims): out.append((im,dict(t,ikon=t.get('ikonlar',[None]*3)[k])))
+            continue
+        if t['tip']=='marka_panorama':
+            for im in marka_panorama(): out.append((im,{'pin':True}))
+            continue
+        if t['tip']=='pafta':
+            out.append((pafta(P+t['src'],t['no'],t['ad'],t['yer'],t['tur'],t.get('cizim',False),t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0)),t)); continue
         if t['tip']=='marka': im=marka()
         elif t['tip']=='gorsel': im=gorsel(P+t['src'],t['no'],t['ad'],t['yer'],t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0))
         else: im=cizim(P+t['src'],t['no'],t['ad'],t['yer'],t['tur'],t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0))
