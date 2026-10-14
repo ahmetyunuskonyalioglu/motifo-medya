@@ -17,6 +17,12 @@ def tiles(plan,P):
             continue
         if t['tip']=='pafta':
             out.append((pafta(P+t['src'],t['no'],t['ad'],t['yer'],t['tur'],t.get('cizim',False),t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0)),t)); continue
+        k=dict(fx=t.get('fx',0.5),fy=t.get('fy',0.5),zoom=t.get('zoom',1.0))
+        if t['tip']=='paspartu': out.append((paspartu(P+t['src'],t['no'],t['ad'],t['yer'],t.get('dikey',False),**k),t)); continue
+        if t['tip']=='kemer': out.append((kemer(P+t['src'],t['no'],t['ad'],t['yer'],t.get('koyu',False),**k),t)); continue
+        if t['tip']=='capraz': out.append((capraz(P+t['src'],t['no'],t['ad'],t['yer'],**k),t)); continue
+        if t['tip']=='palet': out.append((palet(P+t['src'],t['no'],t['ad'],t['yer'],**k),t)); continue
+        if t['tip']=='sb': out.append((sb_gorsel(P+t['src'],t['no'],t['ad'],t['yer'],t.get('renkli',False),**k),t)); continue
         if t['tip']=='marka': im=marka()
         elif t['tip']=='gorsel': im=gorsel(P+t['src'],t['no'],t['ad'],t['yer'],t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0))
         else: im=cizim(P+t['src'],t['no'],t['ad'],t['yer'],t['tur'],t.get('fx',0.5),t.get('fy',0.5),t.get('zoom',1.0),t.get('koyu',False))

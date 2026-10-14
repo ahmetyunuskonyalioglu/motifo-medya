@@ -144,3 +144,78 @@ def marka_panorama():
     track(d,(W//2,H//2-20),'MİMARLIK',ImageFont.truetype(INTER_M,34),BRONZE,14,'m')
     track(d3,(W//2,H//2-20),'İÇ MİMARLIK · BİM',ImageFont.truetype(INTER_M,34),BRONZE,14,'m')
     return [s1,m,s3]
+# ================= Ek konseptler =================
+CREAM=(246,243,238)
+def _name_fit(d,name,maxw,size,font=None):
+    f=ImageFont.truetype(font or SERIF_I,size)
+    while d.textlength(name,font=f)>maxw: f=ImageFont.truetype(font or SERIF_I,f.size-4)
+    return f
+# 4) Paspartu: galeri duvarı — geniş beyaz pasparto, yatay/dikey dönüşümlü
+def paspartu(src,no,name,loc,dikey=False,fx=0.5,fy=0.5,zoom=1.0):
+    bg=Image.new('RGB',(W,H),CREAM); d=ImageDraw.Draw(bg)
+    if dikey: bw,bh=700,960; y0=150
+    else: bw,bh=880,660; y0=300
+    x0=(W-bw)//2
+    sh=Image.new('RGBA',(bw+60,bh+60),(0,0,0,0)); ImageDraw.Draw(sh).rectangle([30,34,bw+30,bh+34],fill=(60,45,30,60))
+    sh=sh.filter(ImageFilter.GaussianBlur(14)); bg.paste(sh,(x0-30,y0-30),sh)
+    bg.paste(cover(load(src),bw,bh,fx,fy,zoom),(x0,y0))
+    yt=y0+bh+110
+    d.text((W//2,yt),name,font=_name_fit(d,name,W-200,72),fill=INK,anchor='ms')
+    track(d,(W//2,yt+40),f'№ {no:02d}  ·  '+up(loc),ImageFont.truetype(INTER_M,24),MUTE,6,'m')
+    return bg
+# 5) Kemer: logodaki dairesel/kemer motifinden pencere
+def kemer(src,no,name,loc,koyu=False,fx=0.5,fy=0.5,zoom=1.0):
+    BG=(30,28,26) if koyu else STONE; TX=(236,228,214) if koyu else INK; MU=(170,156,136) if koyu else MUTE
+    bg=Image.new('RGB',(W,H),BG); aw,ah=760,1000; x0=(W-aw)//2; y0=120
+    m=Image.new('L',(aw,ah),0); dm=ImageDraw.Draw(m); dm.rectangle([0,aw//2,aw,ah],fill=255); dm.ellipse([0,0,aw,aw],fill=255)
+    bg.paste(cover(load(src),aw,ah,fx,fy,zoom),(x0,y0),m)
+    d=ImageDraw.Draw(bg); o=26
+    d.arc([x0-o,y0-o,x0+aw+o,y0+aw+o],180,360,fill=GOLD,width=2)
+    d.line([(x0-o,y0+aw//2),(x0-o,y0+ah+o)],fill=GOLD,width=2); d.line([(x0+aw+o,y0+aw//2),(x0+aw+o,y0+ah+o)],fill=GOLD,width=2)
+    d.line([(x0-o,y0+ah+o),(x0+aw+o,y0+ah+o)],fill=GOLD,width=2)
+    yt=y0+ah+o+120
+    d.text((W//2,yt),name,font=_name_fit(d,name,W-200,76),fill=TX,anchor='ms')
+    track(d,(W//2,yt+44),f'№ {no:02d}  ·  '+up(loc),ImageFont.truetype(INTER_M,24),MU,6,'m')
+    return bg
+# 6) Çizimden gerçeğe: her karede çapraz bölünme, sol üst çizim, sağ alt render
+def capraz(src,no,name,loc,fx=0.5,fy=0.5,zoom=1.0):
+    im=cover(load(src),W,H,fx,fy,zoom); s=sketch(im)
+    paper=np.array(STONE,np.float32); ink=np.array(BRONZE,np.float32)*0.55+np.array(INK,np.float32)*0.45
+    sk=Image.fromarray((paper*s[...,None]+ink*(1-s[...,None])).astype(np.uint8))
+    yy,xx=np.mgrid[0:H,0:W]; line=(xx/W)+(yy/H)   # 1 = köşegen
+    t=np.clip((line-0.98)/0.04,0,1)
+    m=Image.fromarray((t*255).astype(np.uint8))
+    out=Image.composite(im,sk,m)
+    fade=Image.fromarray((np.clip((yy-300)/140,0,1)*255).astype(np.uint8)).point(lambda v:v)
+    out=Image.composite(out,Image.new('RGB',(W,H),STONE),Image.fromarray(np.maximum(np.asarray(fade),np.asarray(m)).astype(np.uint8)))
+    d=ImageDraw.Draw(out)
+    d.line([(W,0),(0,H)],fill=GOLD,width=3)
+    track(d,(84,92),f'№ {no:02d}',ImageFont.truetype(INTER_M,28),BRONZE,6)
+    d.text((80,250),name,font=_name_fit(d,name,640,92),fill=INK,anchor='ls')
+    track(d,(84,290),up(loc),ImageFont.truetype(INTER_M,24),MUTE,6)
+    return out
+# 7) Malzeme paleti: görsel + sağda renk/malzeme şeridi
+def palet(src,no,name,loc,fx=0.5,fy=0.5,zoom=1.0):
+    sw=250; im=cover(load(src),W-sw,H,fx,fy,zoom)
+    bg=Image.new('RGB',(W,H),CREAM); bg.paste(im,(0,0)); d=ImageDraw.Draw(bg)
+    a=np.asarray(im.resize((120,160))).reshape(-1,3).astype(np.float32)
+    crit=(cv2.TERM_CRITERIA_EPS+cv2.TERM_CRITERIA_MAX_ITER,30,1.0)
+    _,lab,cen=cv2.kmeans(a,5,None,crit,4,cv2.KMEANS_PP_CENTERS)
+    cnt=np.bincount(lab.ravel(),minlength=5); order=np.argsort(-cnt)[:4]
+    cols=sorted([tuple(int(v) for v in cen[i]) for i in order],key=lambda c:sum(c))
+    x=W-sw+60; y=150
+    track(d,(x,90),f'№ {no:02d}',ImageFont.truetype(INTER_M,26),BRONZE,5)
+    for c in cols:
+        d.rectangle([x,y,x+130,y+130],fill=c); d.text((x,y+160),'#%02X%02X%02X'%c,font=ImageFont.truetype(INTER_M,20),fill=MUTE); y+=210
+    txt=Image.new('RGBA',(H-260,140),(0,0,0,0)); dt=ImageDraw.Draw(txt)
+    dt.text((0,80),name,font=_name_fit(dt,name,H-300,84),fill=INK,anchor='ls'); track(dt,(4,104),up(loc),ImageFont.truetype(INTER_M,22),MUTE,6)
+    txt=txt.rotate(90,expand=True); bg.paste(txt,(W-sw+8+ (sw-140)//2 if False else W-150,H-txt.height-60),txt)
+    return bg
+# 8) Siyah-beyaz galeri, her dördüncü kare renkli
+def sb_gorsel(src,no,name,loc,renkli=False,fx=0.5,fy=0.5,zoom=1.0):
+    im=gorsel(src,no,name,loc,fx,fy,zoom)
+    if renkli: return im
+    g=np.asarray(im.convert('L')).astype(np.float32)
+    g=np.clip((g-128)*1.08+128,0,255)[...,None]
+    tone=np.array([1.04,1.0,0.94],np.float32)
+    return Image.fromarray(np.clip(g*tone,0,255).astype(np.uint8))

@@ -1,0 +1,155 @@
+{
+ "profil": {
+  "kullanici": "motifomimarlik",
+  "ad": "Motifo Mimarlık",
+  "sayilar": [
+   [
+    "52",
+    "gönderi"
+   ],
+   [
+    "1.248",
+    "takipçi"
+   ],
+   [
+    "186",
+    "takip"
+   ]
+  ],
+  "kategori": "Mimarlık Firması",
+  "bio": [
+   "Mimarlık · İç Mimarlık · BİM",
+   "Konut, ticari mekân ve ofis projeleri",
+   "İstanbul"
+  ]
+ },
+ "one_cikan": [
+  {
+   "ad": "Konut",
+   "src": "AFRİKA/10.jpg"
+  },
+  {
+   "ad": "Ticari",
+   "src": "OYSTER PIRLANTA/1.jpg"
+  },
+  {
+   "ad": "Yeme-İçme",
+   "src": "GLORİA JEANS/5.jpg"
+  },
+  {
+   "ad": "BİM",
+   "src": "BAHADIR_ARMA/A-A_KESİTİ-ŞEFFAF.jpg"
+  },
+  {
+   "ad": "Hamam",
+   "src": "AVANOS HAMAM/19.jpg"
+  }
+ ],
+ "izgara": [
+  {
+   "tip": "panorama",
+   "src": "FLORYA MAVİKORU/1 gece.jpg",
+   "no": 1,
+   "ad": "Florya Mavikoru",
+   "yer": "İstanbul Florya",
+   "koyu": true,
+   "pin": true
+  },
+  {
+   "tip": "capraz",
+   "src": "AFRİKA/9.jpg",
+   "no": 24,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "OYSTER PIRLANTA/13.jpg",
+   "no": 23,
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "capraz",
+   "src": "GLORİA JEANS/2.jpg",
+   "no": 22,
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "AVANOS HAMAM/19.jpg",
+   "no": 21,
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "capraz",
+   "src": "ROCCA AND BEETLE/8.jpg",
+   "no": 20,
+   "ad": "Rocca and Beetle",
+   "yer": "Ataşehir, İstanbul",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "PİDECİ/8.jpg",
+   "no": 19,
+   "ad": "Pide Paradise",
+   "yer": "Uçhisar, Kapadokya",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "capraz",
+   "src": "AFRİKA/16.jpg",
+   "no": 18,
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "FLORYA MAVİKORU/7.jpg",
+   "no": 17,
+   "ad": "Florya Mavikoru",
+   "yer": "İstanbul Florya",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "capraz",
+   "src": "SHOWROOM/3.jpg",
+   "no": 16,
+   "ad": "Seçkin Mutfak",
+   "yer": "Mobilya showroomu",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "OYSTER PIRLANTA/5.jpg",
+   "no": 15,
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "ikon": "karusel"
+  },
+  {
+   "tip": "capraz",
+   "src": "YCR CONSTRACT, ANTALYA LARA/1.jpg",
+   "no": 14,
+   "ad": "YCR Pesta Hotel",
+   "yer": "Antalya Lara",
+   "ikon": "reel"
+  },
+  {
+   "tip": "capraz",
+   "src": "GLORİA JEANS/4.jpg",
+   "no": 13,
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "ikon": "karusel"
+  }
+ ]
+}
