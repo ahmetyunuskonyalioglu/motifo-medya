@@ -40,7 +40,8 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - Paylaşım yolu: Claude in Chrome → instagram.com → Oluştur → gizli file input'a `file_upload` (yollar repo içinden) → kırp: Orijinal (3:4) → İleri → İleri → açıklama → Paylaş. Web'de arşivleme ve sabitleme yok (telefondan yapılır). Paket: `araclar/deneme_paket.py` → paylasimlar/deneme_hesap/ (sira.json: eskiden yeniye).
 
 ## Örnek havuzu ve bellek
-- **Ahmet örnekleri bilgisayarındaki `C:\Users\Win11\Desktop\MOTİFO\PAYLAŞIM ÖRNEKLERİ HAVUZU` klasörüne SADECE görsel olarak atar (not yazmaz).** Her çalışmada (bilgisayar bağlıysa) bu klasörü listele; yeni görselleri stage edip incele, depoya `havuz/` altına kopyala, tabloya 'neyi öne çıkarıyor / nasıl uyarlanır' satırı ekle, sıradaki içeriklere uyarla. İşlenenleri kayıt için tabloya yaz (klasörde silme/taşıma yapma).
+- **ÖNCELİKLİ HAVUZ: Instagram 'Kaydedilenler' → 'Havuz' koleksiyonu** (Ahmet telefondan kaydeder). Her çalışmada Claude in Chrome ile instagram.com/<hesap>/saved/ → Havuz koleksiyonunu aç, yeni gönderileri incele, `havuz/README.md` tablosuna link + 'neyi öne çıkarıyor / nasıl uyarlanır' yaz, sıradaki içeriklere uyarla.
+- **Yedek:** Ahmet örnekleri bilgisayarındaki `C:\Users\Win11\Desktop\MOTİFO\PAYLAŞIM ÖRNEKLERİ HAVUZU` klasörüne SADECE görsel olarak atar (not yazmaz).** Her çalışmada (bilgisayar bağlıysa) bu klasörü listele; yeni görselleri stage edip incele, depoya `havuz/` altına kopyala, tabloya 'neyi öne çıkarıyor / nasıl uyarlanır' satırı ekle, sıradaki içeriklere uyarla. İşlenenleri kayıt için tabloya yaz (klasörde silme/taşıma yapma).
 - `havuz/`: Ahmet'in beğendiği başka sayfa örnekleri (ekran görüntüleri) + README tablosu. Yeni örnek gelince dosyayı buraya kaydet, tabloya satır ekle, Motifo diline uyarla.
 - `havuz/MOTIFO_BELLEK.md`: claude.ai Projesi için özet bellek. Kural değişince bunu da güncelle.
 
