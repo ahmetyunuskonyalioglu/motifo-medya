@@ -8,7 +8,8 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 2. **Tekrar yok.** `kullanilan_gorseller.json` içindeki kaynak dosyalar (alan `kaynak`) bir daha kullanılmaz.
    Instagram'da son 1 yıl içinde paylaşılmış görseller (dhash kayıtları) de kullanılmaz.
    1 yıldan eski paylaşımların görselleri sadece YENİ bir formatta (derinlikli reels, gece/gündüz geçişi, editoryal karusel) kullanılabilir.
-3. **Satış dili yok.** "DM", "bize ulaşın", hizmet listesi, fiyat yok. İşi göster. Kapanış = sadece logo / logo animasyonu.
+3. **Satış dili yok.** "DM", "bize ulaşın", fiyat yok. İşi göster. Kapanış = sadece logo / logo animasyonu.
+   İstisna: ara ara (ayda ~1–2) Motifo/BİM'i anlatan **bilgi gönderileri** olur ("BİM NOTLARI" serisi: araclar/izgara.py `bilgi_kapak`/`bilgi_sayfa`; örnek paylasimlar/taslak_bim_notlari/). Dil öğretici ve sakin; çağrı/fiyat yok, uydurma istatistik yok.
 4. **Kamera yavaş ve derinlikli** (araclar/parallax.py – Depth Anything V2). Düz 2D kaydırma yok. Sahne ≥3,4 sn.
 5. **Müzik telifsiz ve kodla üretilir** — `araclar/muzik.py` (tarzlar: keman, insaat, piyano, lofi, sinematik). Ahmet keman tarzını seviyor; sinematik (karanlık/korkutucu) KULLANMA. Her videoda yeni melodi (ton/tohum). **Aynı parça tekrar kullanılmaz:** keman tarzında her videoda ton/tempo/tohum değiştirilir (farklı melodi); diğer tarzlara geçilecekse `muzik.sonraki_stil()` kullanılır; `muzik.kaydet()` ile `muzik_kayit.json`a yazılır. Reels'te müzik logo kapanışında da devam eder; kapanışa AYRI müzik/efekt konmaz.
 6. Özel günlerde her yıl farklı konsept; mümkünse mimari dil (çizim, ölçü, plan, cephe).

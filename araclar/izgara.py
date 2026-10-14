@@ -309,3 +309,21 @@ def tile(kind,src,no,name,loc,stil='altin',fx=0.5,fy=0.5,zoom=1.0):
         d.text((92,H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=txt+(255,),anchor='ls')
         track(d,(96,H-128),up(loc),ImageFont.truetype(INTER_M,26),mu+(200,),7)
     return im.convert('RGB')
+# ================= Bilgi serisi (BİM / Motifo nasıl çalışır) =================
+def bilgi_kapak(src,seri_no,cumle,seri='BİM NOTLARI',fx=0.5,fy=0.5,zoom=1.0):
+    im=cover(load(src),W,H,fx,fy,zoom).convert('RGBA')
+    sh=Image.new('RGBA',(W,H),(20,18,16,0)); g=Image.new('L',(1,256)); [g.putpixel((0,i),int(200*max(0,(i-90)/166)**1.2)) for i in range(256)]
+    sh.putalpha(g.resize((W,H))); im.alpha_composite(sh); d=ImageDraw.Draw(im,'RGBA')
+    track(d,(96,96),f'{seri}  ·  {seri_no:02d}',ImageFont.truetype(INTER_M,28),GOLDT,7)
+    f=ImageFont.truetype(SERIF_I,104); y=H-120-len(cumle)*112
+    for line in cumle: d.text((92,y),line,font=f,fill=(250,244,232),anchor='ls'); y+=112
+    d.line([(96,H-110),(196,H-110)],fill=GOLDT,width=2)
+    return im.convert('RGB')
+def bilgi_sayfa(src,no,toplam,baslik,aciklama,fx=0.5,fy=0.5,zoom=1.0,seri='BİM NOTLARI'):
+    bg=Image.new('RGB',(W,H),STONE); d=ImageDraw.Draw(bg)
+    track(d,(96,96),f'{seri}',ImageFont.truetype(INTER_M,26),BRONZE,7); track(d,(W-96,96),f'{no:02d} / {toplam:02d}',ImageFont.truetype(INTER_M,26),BRONZE,5,'r')
+    d.text((92,250),baslik,font=_name_fit(d,baslik,W-190,92),fill=INK,anchor='ls')
+    f=ImageFont.truetype(INTER_L,36); y=320
+    for line in aciklama: d.text((96,y),line,font=f,fill=(74,67,59)); y+=54
+    top=y+50; bg.paste(cover(load(src),W-192,H-top-96,fx,fy,zoom),(96,top))
+    return bg

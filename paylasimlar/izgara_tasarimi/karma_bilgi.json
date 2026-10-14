@@ -1,0 +1,210 @@
+{
+ "profil": {
+  "kullanici": "motifomimarlik",
+  "ad": "Motifo Mimarlık",
+  "sayilar": [
+   [
+    "52",
+    "gönderi"
+   ],
+   [
+    "1.248",
+    "takipçi"
+   ],
+   [
+    "186",
+    "takip"
+   ]
+  ],
+  "kategori": "Mimarlık Firması",
+  "bio": [
+   "Mimarlık · İç Mimarlık · BİM",
+   "Konut, ticari mekân ve ofis projeleri",
+   "İstanbul"
+  ]
+ },
+ "one_cikan": [
+  {
+   "ad": "Konut",
+   "src": "AFRİKA/10.jpg"
+  },
+  {
+   "ad": "Ticari",
+   "src": "OYSTER PIRLANTA/1.jpg"
+  },
+  {
+   "ad": "Yeme-İçme",
+   "src": "GLORİA JEANS/5.jpg"
+  },
+  {
+   "ad": "BİM",
+   "src": "BAHADIR_ARMA/ŞEFFAF_BEKLİ_KULLANILIR.jpg"
+  },
+  {
+   "ad": "Hamam",
+   "src": "AVANOS HAMAM/19.jpg"
+  }
+ ],
+ "izgara": [
+  {
+   "tip": "panorama",
+   "src": "FLORYA MAVİKORU/1 gece.jpg",
+   "no": 1,
+   "ad": "Florya Mavikoru",
+   "yer": "İstanbul Florya",
+   "koyu": true,
+   "pin": true
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "cerceve",
+   "src": "AVANOS HAMAM/19.jpg",
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "no": 24,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "yok",
+   "src": "AFRİKA/9.jpg",
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "no": 23,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "alt_orta",
+   "src": "ROCCA AND BEETLE/8.jpg",
+   "ad": "Rocca and Beetle",
+   "yer": "Ataşehir, İstanbul",
+   "no": 22,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "eskiz",
+   "stil": "cerceve",
+   "src": "GLORİA JEANS/2.jpg",
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "no": 21,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "dergi",
+   "src": "OYSTER PIRLANTA/2.jpg",
+   "ad": "Oyster Pırlanta",
+   "yer": "Vitrin · Kayseri İldem",
+   "no": 20,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "kenar",
+   "src": "AFRİKA/16.jpg",
+   "ad": "Gabon Villası",
+   "yer": "Gabon",
+   "no": 19,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "yok",
+   "src": "KIBRIS/1.jpg",
+   "ad": "Kıbrıs",
+   "yer": "KKTC",
+   "no": 18,
+   "ikon": "reel"
+  },
+  {
+   "tip": "bilgi",
+   "src": "BAHADIR_ARMA/ŞEFFAF_BEKLİ_KULLANILIR.jpg",
+   "seri_no": 1,
+   "cumle": [
+    "Hata sahada değil,",
+    "modelde bulunur."
+   ],
+   "fx": 0.6,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "alt_orta",
+   "src": "ROCCA AND BEETLE/2.jpg",
+   "ad": "Rocca and Beetle",
+   "yer": "Bar · Ataşehir",
+   "no": 16,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "cerceve",
+   "src": "SHOWROOM/3.jpg",
+   "ad": "Seçkin Mutfak",
+   "yer": "Mobilya showroomu",
+   "no": 15,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "yok",
+   "src": "AVANOS HAMAM/14.jpg",
+   "ad": "Hamam",
+   "yer": "İç mimari",
+   "no": 14,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "yari",
+   "stil": "cerceve",
+   "src": "AFRİKA/10.jpg",
+   "ad": "Gabon Villası",
+   "yer": "Çizimden gerçeğe",
+   "no": 13,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "dergi",
+   "src": "GLORİA JEANS/6.jpg",
+   "ad": "Gloria Jean's",
+   "yer": "Taksim, İstanbul",
+   "no": 12,
+   "ikon": "reel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "kenar",
+   "src": "YCR CONSTRACT, ANTALYA LARA/1.jpg",
+   "ad": "YCR Pesta Hotel",
+   "yer": "Antalya Lara",
+   "no": 11,
+   "ikon": "karusel"
+  },
+  {
+   "tip": "tile",
+   "tur_": "render",
+   "stil": "alt_orta",
+   "src": "OYSTER PIRLANTA/12.jpg",
+   "ad": "Oyster Pırlanta",
+   "yer": "Kayseri İldem",
+   "no": 10,
+   "ikon": "reel"
+  }
+ ]
+}
