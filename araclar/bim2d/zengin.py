@@ -46,7 +46,7 @@ def slab_edges(mask):
         if th>70 or th<12: continue           # döşeme kalınlığı aralığı
         out.append(dict(x0=x,x1=x+w,a=a,b=b,th=th))
     return sorted(out,key=lambda s:s['b'])
-def zenginlestir(img,shaft_x=None,radyator=None,seed=3):
+def zenginlestir(img,shaft_x=None,radyator=None,seed=3,sap=True):
     a=np.asarray(img.convert('RGB')).astype(np.float32); H,W=a.shape[:2]
     g=cv2.cvtColor(a.astype(np.uint8),cv2.COLOR_RGB2GRAY)
     dark=(g<55).astype(np.uint8); dark=cv2.morphologyEx(dark,cv2.MORPH_OPEN,np.ones((3,3),np.uint8))
@@ -62,7 +62,7 @@ def zenginlestir(img,shaft_x=None,radyator=None,seed=3):
     im=Image.fromarray(out).convert('RGBA'); d=ImageDraw.Draw(im,'RGBA')
     slabs=slab_edges(dark)
     # 3) şap + yerden ısıtma + donatı
-    for s in slabs:
+    for s in (slabs if sap else []):
         x0,x1=s['x0']+6,s['x1']-6; yt=lambda x:s['a']*x+s['b']
         sc=22
         d.polygon([(x0,yt(x0)-sc),(x1,yt(x1)-sc),(x1,yt(x1)),(x0,yt(x0))],fill=(236,226,206,235),outline=(120,108,92,255))
@@ -74,6 +74,13 @@ def zenginlestir(img,shaft_x=None,radyator=None,seed=3):
             for off in (9,s['th']-9):
                 y=yt(x)+off
                 if 0<=int(y)<H and dark[int(y),int(x)]: d.ellipse([x-3.5,y-3.5,x+3.5,y+3.5],fill=(120,40,32,255))
+    if not sap:
+        for s in slabs:
+            yt=lambda x:s['a']*x+s['b']
+            for x in np.arange(s['x0']+26,s['x1']-10,66):
+                for off in (9,s['th']-9):
+                    y=yt(x)+off
+                    if 0<=int(y)<H and dark[int(y),int(x)]: d.ellipse([x-3.5,y-3.5,x+3.5,y+3.5],fill=(120,40,32,255))
     # 4) şaft: kolonlar + vanalar + katlarda branşman
     if shaft_x and slabs:
         sx0,sx1=shaft_x; ytop=slabs[0]['a']*sx0+slabs[0]['b']-150; ybot=slabs[-1]['a']*sx0+slabs[-1]['b']+slabs[-1]['th']

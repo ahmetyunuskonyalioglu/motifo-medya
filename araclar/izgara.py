@@ -478,3 +478,27 @@ def sade_sayfa(img,etiket,koyu=False,sayfa=None,toplam=None):
     track(d,(80,H-90),up(etiket),ImageFont.truetype(INTER_M,26),(255,255,255,230),7)
     if sayfa: track(d,(W-80,H-90),f'{sayfa:02d} / {toplam:02d}',ImageFont.truetype(INTER_M,26),(255,255,255,200),5,'r')
     return im.convert('RGB')
+# ================= BİM açıklamalı sayfa (gerçek görüntü + şematik oklar) =================
+def bim_aciklamali(img,notlar,kutular=(),baslik='BİM  ·  ARMA',sayfa=None,toplam=None):
+    """img: 1080x1440'a oturtulacak görüntü; notlar: [(etiket,(hx,hy),(lx,ly),renk)] — h=hedef nokta, l=etiket konumu."""
+    im=cover(img,W,H).convert('RGBA'); d=ImageDraw.Draw(im,'RGBA')
+    for (x0,y0,x1,y1,etiket) in kutular:
+        for yy in range(int(y0),int(y1),24): d.line([(x0,yy),(x0,min(y1,yy+12))],fill=INK+(220,),width=3); d.line([(x1,yy),(x1,min(y1,yy+12))],fill=INK+(220,),width=3)
+        for xx in range(int(x0),int(x1),24): d.line([(xx,y0),(min(x1,xx+12),y0)],fill=INK+(220,),width=3); d.line([(xx,y1),(min(x1,xx+12),y1)],fill=INK+(220,),width=3)
+    f=ImageFont.truetype(INTER_M,25)
+    for et,(hx,hy),(lx,ly),col in notlar:
+        tw=sum(d.textlength(c,font=f) for c in up(et))+3*len(et); bw_=tw+70; bh_=56
+        # etiket kutusunun hedefe bakan kenarı
+        ax=lx if hx<lx else lx+bw_; ay=ly+bh_/2
+        mx=hx if abs(hy-ay)>40 else (hx+ax)/2
+        d.line([(ax,ay),(mx,ay),(hx,hy)],fill=INK+(235,),width=3)
+        d.ellipse([hx-11,hy-11,hx+11,hy+11],outline=INK+(255,),width=3,fill=(255,255,255,200))
+        d.ellipse([hx-5,hy-5,hx+5,hy+5],fill=col+(255,))
+        d.rounded_rectangle([lx,ly,lx+bw_,ly+bh_],radius=28,fill=(248,245,240,240),outline=INK+(60,),width=1)
+        d.ellipse([lx+20,ly+20,lx+36,ly+36],fill=col+(255,))
+        track(d,(lx+50,ly+14),up(et),f,INK,3)
+    # üst bant
+    sh=Image.new('RGBA',(W,170),(248,245,240,215)); im.alpha_composite(sh,(0,0)); d=ImageDraw.Draw(im,'RGBA')
+    track(d,(80,70),baslik,ImageFont.truetype(INTER_M,26),BRONZE,7)
+    if sayfa: track(d,(W-80,70),f'{sayfa:02d} / {toplam:02d}',ImageFont.truetype(INTER_M,26),BRONZE,5,'r')
+    return im.convert('RGB')
