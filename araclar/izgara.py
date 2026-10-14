@@ -328,8 +328,9 @@ def bilgi_sayfa(src,no,toplam,baslik,aciklama,fx=0.5,fy=0.5,zoom=1.0,seri='BİM 
     top=y+50; bg.paste(cover(load(src),W-192,H-top-96,fx,fy,zoom),(96,top))
     return bg
 # ================= BİM eskiz (koyu zemin): yapı altın çizgi, tesisat renkli kalem =================
+MEP_KREM={'kirmizi':(186,72,52),'mavi':(52,98,170),'yesil':(58,132,82),'sari':(190,140,40)}
 MEP_COL={'kirmizi':(214,104,84),'mavi':(104,150,214),'yesil':(112,176,124),'sari':(226,190,96)}
-def bim_eskiz_cizim(im):
+def bim_eskiz_cizim(im,koyu=True):
     a=np.asarray(im.convert('RGB')); hsv=cv2.cvtColor(a,cv2.COLOR_RGB2HSV).astype(np.float32)
     h,s,v=hsv[...,0]*2,hsv[...,1]/255,hsv[...,2]/255
     col=(s>0.38)&(v>0.22)
@@ -349,29 +350,30 @@ def bim_eskiz_cizim(im):
     ce[sky]*=0.15; line[sky]*=0.15
     line=np.clip(np.maximum(line,ce*0.85),0,1)
     line[cv2.dilate(mep.astype(np.uint8),k,iterations=2)>0]*=0.25
-    BGc=np.array((26,24,22),np.float32); out=np.ones(a.shape,np.float32)*BGc
-    gold=np.array(GOLD,np.float32)
+    BGc=np.array((26,24,22) if koyu else STONE,np.float32); out=np.ones(a.shape,np.float32)*BGc
+    gold=np.array(GOLD if koyu else (92,74,56),np.float32)
     out=out*(1-line[...,None]*0.95)+gold*(line[...,None]*0.95)
     # tesisat: hafif renk yıkaması + kalem kenarı
     for n,m in masks.items():
-        c=np.array(MEP_COL[n],np.float32); mf=cv2.GaussianBlur(m.astype(np.float32),(0,0),1.2)
+        c=np.array(MEP_COL[n] if koyu else MEP_KREM[n],np.float32); mf=cv2.GaussianBlur(m.astype(np.float32),(0,0),1.2)
         out=out*(1-mf[...,None]*0.22)+c*(mf[...,None]*0.22)
         e=cv2.Canny((m*255).astype(np.uint8),50,150).astype(np.float32)/255
         e=cv2.GaussianBlur(e,(0,0),0.7); e=np.clip(e*1.8,0,1)
         out=out*(1-e[...,None])+c*e[...,None]
     return Image.fromarray(out.clip(0,255).astype(np.uint8))
-def bim_eskiz(src,no,name,loc,tur='BİM',fx=0.5,fy=0.5,zoom=1.0):
-    bg=Image.new('RGB',(W,H),(26,24,22)); d=ImageDraw.Draw(bg,'RGBA')
+def bim_eskiz(src,no,name,loc,tur='BİM',fx=0.5,fy=0.5,zoom=1.0,koyu=True):
+    BG_=(26,24,22) if koyu else STONE; AC=GOLD if koyu else BRONZE; TX=(236,228,214) if koyu else INK; MU=(170,156,136) if koyu else MUTE
+    bg=Image.new('RGB',(W,H),BG_); d=ImageDraw.Draw(bg,'RGBA')
     bw,bh=W-2*96,860
-    im=cover(load(src),bw,bh,fx,fy,zoom); sk=bim_eskiz_cizim(im)
-    arr=np.asarray(sk).astype(np.float32); BGc=np.array((26,24,22),np.float32)
+    im=cover(load(src),bw,bh,fx,fy,zoom); sk=bim_eskiz_cizim(im,koyu)
+    arr=np.asarray(sk).astype(np.float32); BGc=np.array(BG_,np.float32)
     yy,xx=np.mgrid[0:bh,0:bw]; m=np.clip(np.minimum.reduce([xx/70,(bw-xx)/70,yy/50,(bh-yy)/90]),0,1)[...,None]
     bg.paste(Image.fromarray((BGc*(1-m)+arr*m).astype(np.uint8)),(96,150))
-    frame_line(d,40,GOLD+(255,),2)
-    track(d,(96,90),f'№ {no:02d}   ·   '+up(tur),ImageFont.truetype(INTER_M,28),GOLD,6)
+    frame_line(d,40,(GOLD if koyu else GOLD)+(255,),2)
+    track(d,(96,90),f'№ {no:02d}   ·   '+up(tur),ImageFont.truetype(INTER_M,28),AC,6)
     d.line([(96,1060),(196,1060)],fill=GOLD,width=2)
     f=ImageFont.truetype(SERIF_I,118)
     while d.textlength(name,font=f)>W-192: f=ImageFont.truetype(SERIF_I,f.size-4)
-    d.text((92,1200),name,font=f,fill=(236,228,214),anchor='ls')
-    track(d,(96,1252),up(loc),ImageFont.truetype(INTER_M,27),(170,156,136),7)
+    d.text((92,1200),name,font=f,fill=TX,anchor='ls')
+    track(d,(96,1252),up(loc),ImageFont.truetype(INTER_M,27),MU,7)
     return bg
