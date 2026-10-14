@@ -1,0 +1,7 @@
+Görünen cephenin arkasında, şapın içinden geçen hatlar, katları dikey geçen tesisat ve taşıyıcı sistem aynı modelde birlikte çizilir.
+
+Arma'da tasarımı BİM ile eş zamanlı yürüttük: mimari, statik ve mekanik tek modelde; çakışmalar çizimde çözüldü, paftalar ve metraj aynı modelden çıktı.
+
+Kaydırın: eskiz → model → inşaat sırası → süreç.
+
+#BİM #Archicad #mimarlık #içmimarlık #tesisat #Bahçeşehir #MotifoMimarlık
