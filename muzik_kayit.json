@@ -55,6 +55,20 @@
    "ton": 57,
    "mod": "minör",
    "tohum": 2
+  },
+  {
+   "video": "florya_reels",
+   "stil": "deep_house",
+   "ton": 59,
+   "mod": "minör",
+   "tohum": 5
+  },
+  {
+   "video": "story_florya_gunduz_gece",
+   "stil": "keman",
+   "ton": 64,
+   "mod": "majör",
+   "tohum": 11
   }
  ]
 }
