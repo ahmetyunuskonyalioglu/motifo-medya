@@ -513,3 +513,12 @@ def reel_kapak(src_img,no,name,loc,fx=0.5,fy=0.5):
     d.text((92,y0+H-150),name,font=ImageFont.truetype(SERIF_I,96),fill=(255,255,255,255),anchor='ls')
     track(d,(96,y0+H-128),up(loc),ImageFont.truetype(INTER_M,26),(255,255,255,200),7)
     return im.convert('RGB')
+# ================= Metricool/IG API için 4:5 dışa aktarım (3:4 tasarım ortada güvenli alanda) =================
+def dort_bes(img34, arka=None):
+    """1080x1440 (3:4) tasarımı 1080x1350'ye (4:5) çevirir. Izgara 4:5'in ortasındaki 3:4'ü gösterir;
+    tasarım bu alana sığdırılır, yanlardaki ~34 px'lik şerit aynı görselin bulanık uzantısıyla doldurulur."""
+    from PIL import ImageFilter
+    FW,FH=1080,1350; iw=round(FH*3/4)
+    ic=img34.resize((iw,FH),Image.LANCZOS)
+    bg=cover(arka if arka is not None else img34,FW,FH).filter(ImageFilter.GaussianBlur(18))
+    bg.paste(ic,((FW-iw)//2,0)); return bg

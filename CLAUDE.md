@@ -36,6 +36,9 @@ Sahibi: Ahmet (ahmetyunuskonyalioglu). Dil: Türkçe. Ahmet'e her zaman sade, k�
 - Üstte 3'lü sabit panorama (şimdilik Florya); zamanla başka projeyle değişebilir. Düzeni kapak tasarımı değil, sıralama kurar (koyu/açık dönüşümlü).
 - Önizleme: `araclar/profil_mock.py spec.json çıktı` (örnekler paylasimlar/izgara_tasarimi/).
 
+- **METRICOOL ORANI:** Instagram API 3:4 kabul etmez → ana hesaba giden gönderi/karuseller `izgara.dort_bes()` ile 1080x1350 (4:5), tasarım ortadaki 3:4 alanda (ızgara bunu gösterir). Reels kapağı `reel_kapak`. Örnek: paylasimlar/2026-10-16_yeni_tasarim_duzeltme/.
+- Zaten 3600 px olan kaynaklar (ör. Oyster 'Yeni klasör') SR'siz kullanılır; sr.py sadece küçük kaynaklara.
+
 ## Deneme hesabı
 - Instagram deneme hesabı: **@denemehesabi4212** (Ahmet'in Chrome'unda açık; Metricool'a bağlı değil). Yeni düzenler önce burada denenir.
 - Paylaşım yolu: Claude in Chrome → instagram.com → Oluştur → gizli file input'a `file_upload` (yollar repo içinden) → kırp: Orijinal (3:4) → İleri → İleri → açıklama → Paylaş. Web'de arşivleme ve sabitleme yok (telefondan yapılır). Paket: `araclar/deneme_paket.py` → paylasimlar/deneme_hesap/ (sira.json: eskiden yeniye).
