@@ -1,4 +1,4 @@
-# 26–30 Ekim 2026 haftası (onay bekliyor)
+# 26–30 Ekim 2026 haftası (BEKLEMEDE — Ahmet: "şimdilik dursun", planlanmadı)
 Not: 19–23 Ekim paketi (Florya reels, Afra Park karuseli) onaylanmadı, Metricool'da yok. Izgara sırası hâlâ başta → bu hafta render, render.
 | Gün | Saat | Tip | Dosya | Izgara |
 |---|---|---|---|---|
