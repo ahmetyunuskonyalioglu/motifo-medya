@@ -69,6 +69,27 @@
    "ton": 64,
    "mod": "majör",
    "tohum": 11
+  },
+  {
+   "video": "aden_reels_gunduz_gece",
+   "stil": "keman",
+   "ton": 67,
+   "mod": "majör",
+   "tohum": 23
+  },
+  {
+   "video": "aden_reels_gunduz_gece",
+   "stil": "keman",
+   "ton": 67,
+   "mod": "majör",
+   "tohum": 23
+  },
+  {
+   "video": "story_aden_gunduz_aksam",
+   "stil": "keman",
+   "ton": 69,
+   "mod": "majör",
+   "tohum": 31
   }
  ]
 }
