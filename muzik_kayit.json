@@ -90,6 +90,27 @@
    "ton": 69,
    "mod": "majör",
    "tohum": 31
+  },
+  {
+   "video": "avanos_hamam_reels",
+   "stil": "keman",
+   "ton": 65,
+   "mod": "dorian",
+   "tohum": 53
+  },
+  {
+   "video": "story_rocca_bar",
+   "stil": "keman",
+   "ton": 60,
+   "mod": "majör",
+   "tohum": 59
+  },
+  {
+   "video": "story_8kasim_sehircilik_2026",
+   "stil": "keman",
+   "ton": 62,
+   "mod": "majör",
+   "tohum": 47
   }
  ]
 }
