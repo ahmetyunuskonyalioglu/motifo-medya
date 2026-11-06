@@ -111,6 +111,41 @@
    "ton": 62,
    "mod": "majör",
    "tohum": 47
+  },
+  {
+   "video": "story_10kasim_2026",
+   "stil": "keman",
+   "ton": 57,
+   "mod": "minör",
+   "tohum": 61
+  },
+  {
+   "video": "gloria_jeans_ritmik_reels",
+   "stil": "keman_ritmik",
+   "ton": 64,
+   "mod": "minör",
+   "tohum": 71
+  },
+  {
+   "video": "gloria_jeans_ritmik_reels",
+   "stil": "keman_ritmik",
+   "ton": 64,
+   "mod": "minör",
+   "tohum": 71
+  },
+  {
+   "video": "gloria_jeans_ritmik_reels",
+   "stil": "keman_ritmik",
+   "ton": 64,
+   "mod": "minör",
+   "tohum": 71
+  },
+  {
+   "video": "story_kibris_spa",
+   "stil": "keman",
+   "ton": 66,
+   "mod": "lidya",
+   "tohum": 67
   }
  ]
 }

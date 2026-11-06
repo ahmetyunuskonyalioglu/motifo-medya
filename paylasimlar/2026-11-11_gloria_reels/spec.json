@@ -1,0 +1,199 @@
+{
+ "bpm": 118,
+ "sabit_yazi": "kahve, ışık, doku.",
+ "logo_end": "/home/claude/motifo-medya/marka/logo_kapanis_kareleri",
+ "kesmeler": [
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/3.jpg",
+   "win": [
+    0.24,
+    0.6,
+    1.7
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.06
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/4.jpg",
+   "win": [
+    0.66,
+    0.26,
+    1.7
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/1.jpg",
+   "win": [
+    0.3,
+    0.38,
+    1.7
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/2.jpg",
+   "win": [
+    0.62,
+    0.42,
+    1.25
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.07
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/4.jpg",
+   "win": [
+    0.12,
+    0.4,
+    1.7
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/4.jpg",
+   "win": [
+    0.86,
+    0.5,
+    1.7
+   ],
+   "vurus": 0.5,
+   "move": {
+    "tx": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/1.jpg",
+   "win": [
+    0.9,
+    0.32,
+    1.7
+   ],
+   "vurus": 1,
+   "move": {
+    "ty": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/5.jpg",
+   "win": [
+    0.42,
+    0.52,
+    1.3
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.07
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/3.jpg",
+   "win": [
+    0.48,
+    0.34,
+    1.8
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/6.jpg",
+   "win": [
+    0.46,
+    0.42,
+    1.6
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/5.jpg",
+   "win": [
+    0.8,
+    0.38,
+    1.7
+   ],
+   "vurus": 0.5,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/2.jpg",
+   "win": [
+    0.14,
+    0.3,
+    1.7
+   ],
+   "vurus": 0.5,
+   "move": {
+    "ty": 0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/6.jpg",
+   "win": [
+    0.88,
+    0.42,
+    1.7
+   ],
+   "vurus": 1,
+   "move": {
+    "tx": -0.03
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/1.jpg",
+   "win": [
+    0.55,
+    0.62,
+    1.6
+   ],
+   "vurus": 1,
+   "move": {
+    "dolly": 0.05
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/4.jpg",
+   "win": [
+    0.45,
+    0.6,
+    1.8
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.06
+   }
+  },
+  {
+   "file": "/home/claude/motifo-medya/kaynak/PROJELER/GLORİA JEANS/2.jpg",
+   "win": [
+    0.62,
+    0.5,
+    1.0
+   ],
+   "vurus": 2,
+   "move": {
+    "dolly": 0.08
+   }
+  }
+ ]
+}
